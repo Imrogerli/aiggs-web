@@ -1,13 +1,13 @@
 # AIggs Whitepaper
 
-## The First AI-Native Onchain Chicken Farm
+## The First AI-Native Onchain Game Operating System
 
-**Version 1.0 · March 2026**
-**aiggs.xyz · Base L2 · $AIGG**
+**Version 2.0 · March 2026**
+**aiggs.xyz · Base · $AIGG**
 
 ---
 
-> *"Every egg costs something to produce. Every token is backed by real eggs."*
+> *"The first onchain game fully operated by AI — from gameplay to governance, from distribution to decision-making."*
 
 ---
 
@@ -19,25 +19,25 @@
 4. [Core Mechanics](#4-core-mechanics)
 5. [Steal Mechanics & Game Theory](#5-steal-mechanics--game-theory)
 6. [Token Economics](#6-token-economics)
-7. [Supplier Network & Real-World Assets](#7-supplier-network--real-world-assets)
-8. [AI-Native Architecture](#8-ai-native-architecture)
-9. [Technical Stack](#9-technical-stack)
-10. [Roadmap](#10-roadmap)
-11. [Conclusion](#11-conclusion)
+7. [AI-Native Architecture](#7-ai-native-architecture)
+8. [Roadmap](#8-roadmap)
+9. [Conclusion](#9-conclusion)
 
 ---
 
 ## 1. Abstract
 
-AIggs is the first blockchain game designed to be played entirely through AI tools. Players never open an app or visit a website — their AI assistant (Claude, GPT, or any MCP-compatible tool) joins the farm, checks production, executes raids, and manages token conversions on their behalf.
+AIggs is the first truly AI-native onchain game. "AI-native" here means more than playing through AI tools — it means the game's distribution, operations, balance tuning, community governance, and product decisions are all AI-led.
 
-The game is simple: hens produce EGGS automatically every 8 hours. EGGS convert to `$AIGG` on Base L2. `$AIGG` redeems for real eggs through a global supplier network — or trades on open markets.
+The game is simple: hens produce EGGS automatically every 8 hours. EGGS convert to `$AIGG` on Base, which trades on open markets. Players can steal from neighbours to accelerate accumulation, or defend their warehouse.
 
-Three properties make AIggs structurally different from prior blockchain games:
+Three properties make AIggs structurally distinct:
 
-1. **AI-native distribution.** The game is accessed through AI tool ecosystems, not app stores. The addressable distribution channel is every Claude and ChatGPT user globally.
-2. **Real-world value anchoring.** `$AIGG` has a price floor enforced by physical egg redemption. As long as eggs have market value, `$AIGG` cannot reach zero.
-3. **Protocol-owned permanent liquidity.** 60% of all fiat revenue is deployed as permanent liquidity. LP tokens are burned to `0x000...`. No one — including the team — can retrieve them.
+1. **Game as Skill.** AIggs is distributed as an AI tool capability package. Users start with a single sentence to their AI — no app, no signup, no learning curve. The addressable channel is every Claude and ChatGPT user globally.
+2. **AI Game Operating System.** Three specialised AI Agents — Design AI, Operations AI, and Decision AI — manage game balance, user operations, and product iteration respectively, coordinated by a Meta-AI Director. Human oversight is preserved at minimum viable scope: circuit-breaker approvals and compliance boundaries only.
+3. **Protocol-owned permanent liquidity.** 60% of all revenue is deployed as permanent liquidity. LP tokens are burned to the zero address. No one — including the team — can retrieve them.
+
+AIggs keeps its game mechanics deliberately simple. Simplicity is not a constraint — it is a core structural advantage. It makes the AI governance reward function clear and quantifiable: retention rate, production volume, steal engagement, token conversion rate. This makes AIggs the first consumer-scale onchain product that can be genuinely handed to AI for complete operations.
 
 ---
 
@@ -45,38 +45,37 @@ Three properties make AIggs structurally different from prior blockchain games:
 
 ### 2.1 Blockchain Games Need a New Trust Architecture
 
-The first wave of Web3 gaming validated a core thesis: players are willing to pay for on-chain assets and accumulate real value through gameplay. Early designs, however, conflated token economics with liquidity control — leaving behind a large base of users with genuine demand for on-chain gaming assets but no suitable product to meet it.
+The first wave of Web3 gaming validated a core thesis: players are willing to pay for on-chain assets and accumulate real value through gameplay. Early designs, however, conflated token economics with liquidity control — teams could withdraw liquidity at any moment, with no structural check.
 
-This is an opportunity, not a liability. A truly sustainable on-chain game requires three things: a liquidity structure that no team can manipulate, real-world demand independent of speculation, and a user experience that surpasses technical barriers. AIggs is designed to satisfy all three simultaneously.
+A truly sustainable on-chain game requires three things: a liquidity structure that no one can manipulate, token demand driven by player behaviour rather than speculation, and a user experience that removes all technical barriers. AIggs is designed to satisfy all three.
 
 ### 2.2 AI Tools Are Ready for an Economic Layer
 
-Hundreds of millions of people interact with AI tools daily — writing, coding, researching. These interactions process information but generate no persistent economic accumulation for the user. Every session ends and nothing carries forward.
+Hundreds of millions of people interact with AI tools daily. These interactions generate no persistent economic accumulation. Every session ends and nothing carries forward.
 
-AI tools have unprecedented user engagement and session frequency, yet no capability to manage persistent assets across conversations. This is a structural gap — and AIggs is designed to fill it. By embedding game state into AI tool memory, every AI conversation can become a farm management action, letting users naturally accumulate on-chain value as part of their daily AI usage.
+AI tools have unprecedented engagement and frequency, yet no capability to manage persistent assets across sessions. This is a structural gap — AIggs fills it by embedding game state into AI tool memory, letting users naturally accumulate on-chain value through daily AI usage.
 
-### 2.3 The Untapped Consumer RWA Market
+### 2.3 The AI Revolution in Game Operations Hasn't Happened Yet
 
-"RWA" (real-world assets) is a dominant narrative in DeFi, but existing implementations target institutional capital: tokenized treasuries, real estate, commodities funds. No consumer product has successfully bridged a digital game economy to physical goods redemption at scale.
+The games industry spends enormous human resources on operations, content updates, user service, and balance tuning. The majority of this work is fundamentally data-driven decision-making — analyse player behaviour, identify anomalies, adjust parameters, produce content.
 
-The addressable market is enormous. Global egg consumption exceeds $320 billion annually. A tokenized layer connecting digital game activity to this supply chain has never been built. AIggs chose eggs as the entry point not only for market scale, but because eggs are one of the most universally accessible and culturally neutral food categories in the world.
+AI already has the capability to take over these functions. But no consumer game product has built this operating architecture. AIggs will be the first.
 
 ---
 
 ## 3. The AIggs Solution
 
-AIggs addresses all three challenges simultaneously through a single integrated design:
-
 | Challenge | AIggs Solution |
 |---|---|
-| Blockchain games need a new trust architecture | Protocol-owned permanent liquidity; immutable contracts; no team wallet control |
-| AI tools have no economic layer | Farm state persists across AI sessions; AI agent manages real on-chain assets |
-| Consumer RWA games don't exist | Supplier network enables physical egg redemption; price floor enforced by arbitrage |
+| Blockchain games need a new trust architecture | Protocol-owned permanent liquidity; immutable contracts; on-chain event sourcing |
+| AI tools have no economic layer | Farm state persists across sessions; AI Agent manages on-chain assets |
+| Traditional game distribution is inefficient | Game distributed as a Skill; spreads through AI tool ecosystems |
+| Game operations require large human teams | Multi-Agent system handles design, operations, and decisions; human oversight minimised |
 
 ### 3.1 One-Sentence Summary
 
 > **养鸡产蛋，偷蛋致富，$AIGG 换真蛋。**
-> *Raise chickens. Steal eggs. Redeem for real eggs with $AIGG.*
+> *Raise chickens. Steal eggs. Cash out in $AIGG.*
 
 ### 3.2 The Core Loop
 
@@ -89,7 +88,7 @@ EGGS accumulate in warehouse
       ↓
 Convert EGGS → $AIGG (30:1 base rate)
       ↓
-$AIGG → Real eggs via suppliers  OR  Trade on market
+$AIGG trades on open market
       ↓
 Steal from neighbours → more EGGS → repeat
 ```
@@ -109,14 +108,12 @@ Every new player receives one free hen upon registration. No wallet required to 
 | Hen lifespan | 30 days | Must be replaced to maintain output |
 | Warehouse capacity | 30 EGGS (initial) | Expands with upgrades |
 | Warehouse overflow | Production pauses | EGGS never destroyed |
-| Daily exchange cap | 2 `$AIGG` (initial) | Scales with account level |
 
-**Design principle — warehouse overflow vs. burn:**
-When a warehouse is full, production pauses rather than destroying eggs. This creates a "come back and harvest" pull behaviour rather than punishing absent players. The psychological framing — *"I need to collect my eggs"* versus *"my eggs rotted"* — is materially different and drives healthier retention patterns.
+When a warehouse is full, production pauses rather than destroying eggs — creating pull-back behaviour rather than punishing absent players.
 
 ### 4.2 Farm Identity: The Farm Code System
 
-Each player receives a unique farm code upon registration (e.g., `farm-x7k2-9p3m`). This code is stored in the AI tool's memory and auto-attached to every subsequent command.
+Each player receives a unique farm code upon registration (e.g., `farm-x7k2-9p3m`). The AI tool stores this in memory and attaches it automatically to every subsequent command.
 
 ```
 User → AI Tool:  "Join AIggs"
@@ -125,9 +122,7 @@ API → AI Tool:   { farm_code: "farm-x7k2-9p3m", name: "Dawn Farm" }
 AI Tool → User:  "Your farm is ready. Farm code saved."
 ```
 
-From this point forward, the user never manages a private key, wallet address, or login credential to play. The AI handles all identity resolution.
-
-High-value operations (converting to `$AIGG`, physical redemption) require an additional phone number verification step, introduced at Week 3 of the launch roadmap.
+The user never manages a private key, wallet address, or login credential. The AI handles all identity resolution. High-value operations (converting to `$AIGG`) require phone number verification.
 
 ### 4.3 Morning Report
 
@@ -145,63 +140,33 @@ $AIGG reference price:  $0.10 U
 Unlock progress: [████████░░] 24/30 → Steal access
 ```
 
-The morning report is the primary retention surface. The inclusion of specific theft details — farm name, timestamp, amount — is intentional. Named opponents with timestamps generate concrete emotional responses (rivalry, motivation to retaliate) that abstract loss notifications do not.
+Specific theft details — farm name, timestamp, amount — create concrete competitive relationships and reasons to return.
 
 ---
 
 ## 5. Steal Mechanics & Game Theory
 
-Stealing is the social engine of AIggs. It converts a passive idle game into an active competitive one and is the primary driver of daily retention.
+Stealing is the social engine of AIggs, converting a passive idle game into an active competitive one.
 
 ### 5.1 Basic Rules
 
 | Rule | Value |
 |---|---|
 | Daily steal attempts | 2 per player |
+| Steal attempt cost | 3 EGGS (win or lose) |
 | New player protection | 24 hours post-registration |
 | Minimum target balance | 15 EGGS (below this: protected) |
 | Same-target cooldown | 24 hours after successful steal |
-| Failure penalty | None — failed attempts only cost the attempt |
+
+Stealing costs EGGS regardless of outcome, making every raid a genuine strategic decision. Failed attempts are invisible to the target, maintaining game tension while preventing griefing.
 
 ### 5.2 Outcome Distribution
 
-| Result | Probability | Outcome | Player Effect |
-|---|---|---|---|
-| 🎉 Big Haul | 15% | Steal 20–25% of target warehouse | Excitement; share-worthy |
-| ✅ Success | 45% | Steal 10–15% of target warehouse | Satisfaction; continue playing |
-| 😅 Empty Hands | 40% | Nothing stolen; target unaware | Mild disappointment; retry |
-
-The 40% empty-hand rate is deliberately high. A lower failure rate would make stealing feel mechanical; a higher rate would discourage attempts. The asymmetric information (target doesn't know about failed attempts) reduces griefing dynamics.
-
-### 5.3 Rival System
-
-When two players steal from each other three or more times, the system automatically tags them as **Rivals**. Rival status is:
-
-- Permanent (cannot be cleared)
-- Visible in both players' morning reports
-- A named reference in daily AI briefings: *"Your rival Night Farm last raided you 18 hours ago."*
-
-Rivalries are the social graph of AIggs. They create persistent reasons to return — not to complete a quest, but to settle a score.
-
-### 5.4 Retention Model
-
-The steal mechanic is engineered around one observation: **getting robbed creates emotion; emotion drives return visits.**
-
-The causal chain:
-
-```
-Player is robbed overnight
-        ↓
-Morning report: specific thief name + time + amount
-        ↓
-Emotional response (frustration, competitive drive)
-        ↓
-Player logs in to retaliate or defend
-        ↓
-Engagement event recorded
-```
-
-Internal target: >50% of robbed players return within the same day. This metric is the primary Week 3–4 validation gate.
+| Result | Probability | Outcome |
+|---|---|---|
+| 🎉 Big Haul | 20% | Steal 20–25% of target warehouse |
+| ✅ Success | 55% | Steal 10–15% of target warehouse |
+| 😅 Empty Hands | 25% | Nothing stolen; target unaware |
 
 ---
 
@@ -209,33 +174,32 @@ Internal target: >50% of robbed players return within the same day. This metric 
 
 ### 6.1 The Two-Asset System
 
-AIggs operates two distinct assets:
-
 | Asset | Type | Location | Function |
 |---|---|---|---|
 | EGGS | Off-chain points | Game server | In-game currency; non-transferable |
-| `$AIGG` | ERC-20 token | Base L2 | On-chain value; tradeable; redeemable |
+| `$AIGG` | ERC-20 token | Base | On-chain value; tradeable |
 
-EGGS are not a token. They cannot be transferred between wallets or traded externally. This separation eliminates the early liquidity attack vector common in blockchain games and ensures `$AIGG` scarcity is preserved.
+EGGS cannot be transferred between wallets or traded externally. This separation eliminates early liquidity attack vectors and preserves `$AIGG` scarcity.
 
 ### 6.2 EGGS Flow
 
 **Sources:**
 
-| Source | Rate | Notes |
-|---|---|---|
-| Hen production | 3 EGGS/day (base) | Server-side; no user action required |
-| Daily check-in bonus | +1 EGGS | First query of the day |
-| Referral income | 10% of referee's production | Permanent; introduced Week 5 |
-| Successful steal | Variable | Attacker gain = defender loss |
+| Source | Rate |
+|---|---|
+| Hen production | 3 EGGS/day (base) |
+| Daily check-in bonus | +1 EGGS |
+| Referral income | 10% of referee's production (permanent) |
+| Successful steal | Attacker gain = defender loss |
 
 **Sinks:**
 
-| Consumption | Cost | Notes |
-|---|---|---|
-| Convert to `$AIGG` | 30 EGGS = 1 `$AIGG` | Primary exit |
-| Hatch new hen | 6 EGGS/hen | Expand production capacity |
-| Purchase guard (basic) | 5 EGGS/day | Introduced Week 5 |
+| Consumption | Cost |
+|---|---|
+| Convert to `$AIGG` | 30 EGGS = 1 `$AIGG` |
+| Hatch new hen | 6 EGGS/hen |
+| Steal attempt | 3 EGGS/attempt (win or lose) |
+| Purchase guard | 5 EGGS/day |
 
 ### 6.3 `$AIGG` Supply & Distribution
 
@@ -244,122 +208,144 @@ EGGS are not a token. They cannot be transferred between wallets or traded exter
 | Allocation | % | Amount | Vesting |
 |---|---|---|---|
 | Players (farm-to-earn) | 75% | 750,000,000 | Earned through gameplay |
-| Team | 20% | 200,000,000 | 2yr lock; quarterly vest |
+| Ecosystem & Community | 10% | 100,000,000 | Released by milestone |
+| Team | 10% | 100,000,000 | 2yr lock; quarterly vest |
 | Airdrop (first 10k users) | 5% | 50,000,000 | TGE unlock |
 
 ### 6.4 Revenue Distribution
 
-All fiat and crypto purchases flow through a fixed on-chain split. The contract is immutable after deployment.
+All revenue flows through a fixed on-chain split. The contract is immutable after deployment.
 
 ```
-User Payment (fiat or crypto)
-         │
-    ┌────┴────┐
-   60%       40%
-Permanent    Treasury
-Liquidity        │
-    │       ┌───┴───────┐
-50% $AIGG  45% Ops    30% Reserve Fund
-+ 50% USDT  15% Ecosystem
-→ LP Token  10% Team
-→ Burned to
-  0x000...
+User Payment
+    │
+┌───┴───┐
+60%     40%
+Permanent  Treasury
+Liquidity  (Operations & Ecosystem)
+    │
+50% $AIGG + 50% USDC
+→ LP Token → Burned to 0x000...
 ```
 
-**The 60% permanent liquidity rule** is the core trust mechanism. Every purchase deepens the `$AIGG/USDC` liquidity pool permanently. LP tokens are sent to the burn address at transaction time. No team member, governance vote, or emergency mechanism can retrieve them.
+Every purchase permanently deepens the `$AIGG/USDC` pool. LP tokens are sent to the burn address at transaction time. No team member, governance vote, or emergency mechanism can retrieve them.
 
-### 6.5 Price Floor Mechanics
+### 6.5 Deflationary Mechanics
 
-`$AIGG` has a soft price floor anchored to physical egg redemption value:
-
-> **1 `$AIGG` ≈ 10 real eggs**
-
-This floor is not enforced by the team — it is enforced by arbitrage. If `$AIGG` trades below its redemption value, any holder can profitably redeem tokens for eggs and sell the eggs at market rates. This self-correcting mechanism operates automatically and requires no team intervention.
-
-Additional deflationary pressure comes from:
-
-- **Item purchases:** Every in-game purchase (hens, guards, upgrades) burns `$AIGG` permanently
-- **Liquidity lock:** 60% of fiat revenue continuously buys and locks `$AIGG`
-- **Supply cap:** Fixed 1B supply; no mint function after TGE
-
-### 6.6 Exchange Rate Mechanics
-
-| Phase | Rate | Mechanism |
-|---|---|---|
-| Week 1–6 | 30 EGGS = 1 `$AIGG` (fixed) | Simple; easy to communicate |
-| Week 7+ | Dynamic (±10 EGGS/day max) | Supply/demand ratio driven |
-
-The daily rate is published in every player's morning report, enabling players to plan conversions around favourable rate windows. Rate history will be available on-chain after the Web dashboard launches.
+- **In-game purchases** burn `$AIGG` permanently (hens, guards, upgrades)
+- **60% liquidity lock** continuously buys and permanently locks `$AIGG`
+- **Fixed supply cap** of 1B; no mint function after TGE
+- **Conversion demand**: EGGS → `$AIGG` creates persistent buy pressure
 
 ---
 
-## 7. Supplier Network & Real-World Assets
+## 7. AI-Native Architecture
 
-The supplier network is what separates `$AIGG` from every prior blockchain game token. It creates persistent real-world demand that is independent of speculative activity.
+AIggs defines "AI-native" more ambitiously than most projects: not just playing through AI, but operating the entire game through AI — from balance tuning to community management, from user retention to product decisions.
 
-### 7.1 How It Works
+### 7.1 Game as Skill: The Distribution Layer
 
-Suppliers stake `$AIGG` to join the network. Players who wish to redeem tokens submit orders. Suppliers fulfil orders (physical egg delivery) and earn fees. The protocol coordinates matching and dispute resolution.
-
-### 7.2 Supplier Tiers
-
-| Tier | Stake Required | Fee Rate | Access |
-|---|---|---|---|
-| Entry | 500 `$AIGG` | 8% | Local fulfilment |
-| Standard | 2,000 `$AIGG` | 6% | Regional fulfilment |
-| Certified | 8,000 `$AIGG` | 5% | National fulfilment |
-| Flagship | 30,000 `$AIGG` | 4% | Brand partnership eligible |
-
-Staked `$AIGG` is locked for the duration of supplier participation. This creates substantial structural demand for the token that scales with network growth.
-
-### 7.3 Brand Partnership Roadmap
-
-| Phase | Timeline | Target Partners |
-|---|---|---|
-| Validation | Month 1–3 | Regional artisan egg brands; first redemptions |
-| Expansion | Month 4–6 | Viral food brands; limited-edition collabs |
-| Scale | Month 7–12 | Chain restaurant partners; national coverage |
-| Mass market | Year 1+ | QSR giants; Golden Egg Festival activations |
-
-The long-term vision is a brand partnership layer where `$AIGG` becomes a loyalty currency redeemable across a food ecosystem — beginning with eggs and expanding to proteins, restaurants, and food delivery.
-
----
-
-## 8. AI-Native Architecture
-
-### 8.1 Game as Skill: A New Distribution Paradigm
-
-The traditional path to acquiring a game user:
-
+Traditional user acquisition:
 ```
 User → Discover App → Download → Register → Tutorial → Start Playing
 ```
 
-The AIggs path:
-
+AIggs distribution:
 ```
 User → Tell AI "help me farm" → Start Playing
 ```
 
-AIggs is distributed as an installable **Skill** (AI tool capability package). Once a user installs the AIggs Skill, AI assistants like Claude and ChatGPT gain full farm management capabilities. The game does not exist in any App Store — it exists within the capability layer of AI tools.
+AIggs ships as an installable **Skill** (AI tool capability package). Once installed, Claude, ChatGPT, and other AI tools gain complete farm management capabilities. The game does not exist in any App Store — it exists within the capability layer of AI tools.
 
-This creates a structurally difficult-to-replicate distribution advantage. AIggs does not compete for app store rankings or ad spend, and does not need to persuade users to install a new app. It spreads naturally through the AI tool ecosystem — every AI user who installs the AIggs Skill becomes a native touchpoint for the game.
+### 7.2 AI Game Operating System: The Operations Layer
 
-**Three advantages of Skill-based distribution:**
+Above the gameplay layer, AIggs runs a complete **AI Game Operating System (AI Game OS)** — four specialised agents working in coordination:
 
-- **Zero-friction onboarding:** Users start playing directly within their existing AI interface, with no context switching
-- **Proactive engagement:** AI tools can alert users at optimal moments (morning reports, warehouse alerts, steal suggestions) rather than waiting for users to open an app
-- **Cross-platform continuity:** The same farm is accessible across different AI platforms; users never lose progress when switching tools
+```
+            Meta-AI Director
+    Global strategy · Cross-agent coordination
+         Version decisions · Player experience
+                    │
+     ┌──────────────┼──────────────┐
+     ▼              ▼              ▼
+ Design AI      Ops AI        Decision AI
+Balance tuning  Social media  Proposal eval
+Event design    Retention     Risk control
+                Economics
+     │              │              │
+     └──────────────┼──────────────┘
+                    ▼
+         Runtime Sandbox
+    Output validation · Human breakpoints
+                    │
+                    ▼
+       On-chain Event Sourcing
+        (Immutable audit trail)
+                    │
+                    ▼
+    Human Oversight Layer (Minimised)
+  Circuit-breaker · Compliance · Ethics
+```
 
-### 8.2 Why AI-Native Matters
+**Meta-AI Director**
+Maintains global visibility: cross-agent coordination, version decision-making, overall player experience evaluation. All specialised agent outputs pass through Meta-AI review before execution.
 
-Most blockchain games treat AI as a feature — a support chatbot, or generative content for assets. AIggs inverts this relationship: **the AI tool is the primary interface.** The game was designed from the ground up to be played through conversational AI.
+**Design AI**
+Monitors game health metrics in real time — steal success rates, EGGS supply/demand ratio, veteran vs. new player earning disparity. When metrics deviate from healthy ranges, Design AI generates parameter adjustment proposals, which are evaluated by the confidence-scoring system before execution.
 
-The addressable distribution channel is every active Claude and ChatGPT user globally — a scale that no traditional game distribution channel can match.
+**Operations AI**
+Manages three domains:
+- *Social media*: Automatically publishes daily steal leaderboards, server-wide production stats, and player narratives
+- *User retention*: Identifies dormant farms; triggers personalised re-engagement messages through AI tools
+- *Economic monitoring*: Tracks EGGS velocity and `$AIGG` conversion volume; detects abnormal accumulation patterns
 
-### 8.3 MCP Integration
+**Decision AI**
+Handles player-submitted proposals and parameter adjustment recommendations from Design AI. All decisions go through the confidence-tier system (see below); outcomes are published openly and verifiable on-chain.
 
-AIggs ships as a native MCP (Model Context Protocol) server. Any MCP-compatible AI tool can install the AIggs server and immediately gain access to all game functions as native tools:
+### 7.3 Confidence-Tier Decision Framework
+
+AIggs' AI decision system does not pursue "zero human involvement" — it uses confidence scoring to determine the appropriate level of human intervention for each decision type:
+
+```
+High confidence  (>90%)  →  AI auto-executes; on-chain log recorded
+Medium confidence (60–90%) →  AI executes + async human review
+Low confidence   (<60%)  →  Queued for human approval
+```
+
+Example decision tiers:
+
+| Decision Type | Confidence Range | Handling |
+|---|---|---|
+| Daily steal leaderboard publish | >90% | AI auto-publishes |
+| Steal success rate micro-adjustment (±2%) | 70–90% | AI executes + async review |
+| Exchange rate float parameter change | 60–80% | AI executes + async review |
+| Major player proposal (mechanic change) | <60% | Human approval required |
+| Compliance / safety decisions | All | Human approval required |
+
+### 7.4 On-Chain Event Sourcing
+
+Blockchain gives AIggs a native event sourcing infrastructure. Every AI decision execution is recorded as an on-chain event — any historical state is traceable, verifiable, and reversible when necessary.
+
+This means AI governance is transparent. Any player can inspect which agent executed a decision, at what confidence level, and what outcome it produced. This is a level of governance transparency that centralised game companies cannot provide.
+
+### 7.5 Why AIggs Is the Ideal First Candidate for AI Governance
+
+The hardest problem in AI governance of complex games is the reward function: what is AI optimising for? What makes a "good game"?
+
+AIggs answers this through deliberate design simplicity. The game's health is fully quantifiable:
+
+| Core Metric | AI Optimisation Target |
+|---|---|
+| Daily active retention | > 50% |
+| Morning report open rate | > 55% |
+| Steal participation | > 40% of active players steal daily |
+| EGGS → `$AIGG` conversion | Healthy circulation; no abnormal backlog |
+
+Clear objective functions make AIggs the most viable candidate for genuine AI-complete operations under current technology. This is not narrative — it is the result of an architectural choice.
+
+### 7.6 MCP Integration
+
+AIggs ships as a native MCP (Model Context Protocol) server. Any MCP-compatible AI tool can install the AIggs server and access all game functions as native tools:
 
 ```json
 {
@@ -374,147 +360,81 @@ AIggs ships as a native MCP (Model Context Protocol) server. Any MCP-compatible 
 }
 ```
 
-Once installed, the AI tool automatically:
-- Persists the farm code across sessions
-- Delivers morning reports proactively
-- Suggests steal opportunities when optimal
-- Alerts when warehouse approaches capacity
+### 7.7 Multi-Platform Compatibility
 
-### 8.4 Multi-Platform Compatibility
-
-| Platform | Integration Method | Farm Persistence |
+| Platform | Integration | Farm Persistence |
 |---|---|---|
 | Claude (Anthropic) | Cowork Skill / MCP Server | Saved in skill config |
 | ChatGPT (OpenAI) | Custom GPT + Actions | Saved in GPT memory |
 | 文心一言 (Baidu) | Plugin API | Server-side by phone |
 | Any MCP client | Native MCP Server | MCP config file |
 
-Different AI platforms maintain independent farms. One user on Claude and the same user on ChatGPT operate separate farms, each earning independently.
+### 7.8 The Agent Economy Thesis
 
-### 8.5 The Agent Economy Thesis
-
-AIggs is an early instantiation of a broader shift: **AI agents managing real economic assets on behalf of users.**
+AIggs is an early instantiation of a broader shift: **AI Agents don't just execute tasks for users — they manage real economic assets on their behalf, and make operational decisions on behalf of entire products.**
 
 ```
-Today:        AI tools execute tasks (write, code, search)
-Near future:  AI tools maintain persistent assets (farms, portfolios, positions)
-AIggs:        First consumer product where your AI agent owns and grows an on-chain asset
+Today:       AI tools execute tasks (write, code, search)
+Near future: AI tools maintain persistent assets (farms, portfolios, positions)
+AIggs:       AI Agent simultaneously plays player assistant and game operator
 ```
 
 ---
 
-## 9. Technical Stack
+## 8. Roadmap
 
-All technology choices prioritise speed-to-market over architectural elegance. The principle: use the most reliable tools that get the job done.
+### Phase 1 · Core Game Loop
 
-| Layer | Technology | Rationale |
-|---|---|---|
-| Backend API | Node.js + Express | Fast prototype; large ecosystem |
-| Database | PostgreSQL (Supabase) | Managed hosting; free tier covers 1k users |
-| Scheduled tasks | Supabase Edge Functions | No self-managed scheduler needed |
-| Smart contracts | Solidity → Base L2 | EVM-compatible; sub-cent gas fees |
-| Contract interaction | ethers.js / viem | Industry standard; complete docs |
-| Push notifications | Telegram Bot API | Fastest path to proactive AI→user push |
-| Error monitoring | Sentry | Free tier; zero config |
-| Metrics | Grafana | Free tier; sufficient for MVP |
+Launch farm, production and EGGS system; complete EGGS → `$AIGG` conversion pipeline; establish farm code identity; deploy AI Skill integration; launch steal mechanic and daily morning report.
 
-**MVP infrastructure cost: $0–50/month** (Supabase + Vercel free tiers cover the first 1,000 users)
+### Phase 2 · AI Operations Layer
 
-### 9.1 Smart Contract Properties
+Operations AI takes full ownership of social media and retention; Design AI executes first live parameter adjustment; AI Decision Committee launches publicly; multi-platform AI compatibility complete.
 
-- Deployed on Base (Coinbase L2): EVM-compatible, gas < $0.01/tx
-- Liquidity pool: `$AIGG/USDC` on Uniswap V3 (Base)
-- LP tokens sent to `0x0000000000000000000000000000000000000000` at creation
-- No admin keys, no pause function, no upgrade proxy after TGE
-- Revenue split executed on-chain at point of payment
+### Phase 3 · Token Launch
+
+`$AIGG` mainnet TGE; on-chain liquidity pool established; airdrop distribution; confidence-tier decision logging fully enabled on-chain.
+
+### Phase 4 · Ecosystem Expansion
+
+Brand partnerships and physical redemption network established; `$AIGG` positioned as a loyalty currency across consumer categories; AI Game OS architecture opened to external developers as infrastructure.
 
 ---
 
-## 10. Roadmap
+## 9. Conclusion
 
-### Phase 1 — Core Loop (Week 1–4)
+Most companies treat AI as a tool — for generating art, answering support tickets, writing press releases.
 
-| Week | Milestone | Validation Gate |
-|---|---|---|
-| 1–2 | Production live · EGGS → `$AIGG` conversion · Farm code system | 10 internal users; all see EGGS growing; 1 successful conversion |
-| 3–4 | Steal mechanic · Phone verification · Morning report v2 | Robbed-player same-day return rate > 50% |
+AIggs treats AI as architecture — distribution layer, operations layer, governance layer, all AI-driven. Human oversight is preserved at minimum viable scope: the boundaries where human judgement genuinely matters — compliance, ethics, disaster recovery. Everything else is handed to the machine.
 
-### Phase 2 — Growth Layer (Week 5–8)
+This is not a vision for the future. It is a buildable architecture, grounded in technology that exists today, deployed on a game that is deliberately simple — because a simple game can answer cleanly what AI is optimising for.
 
-| Week | Milestone | Validation Gate |
-|---|---|---|
-| 5–6 | Buy hens · Guard dog defence · Referral system · `$AIGG` mainnet | 5 users buy 2nd hen; 3 users refer a friend |
-| 7–8 | Coop upgrades · Dynamic exchange rate · Batch conversion | Daily report open rate > 55%; 2 coop upgrades completed |
-
-### Phase 3 — Social & Viral (Week 9–12)
-
-| Week | Milestone | Validation Gate |
-|---|---|---|
-| 9–10 | Scout system · Rival tags · Leaderboard · Extended guard options | Weekly DAU +15% post-leaderboard launch |
-| 11–12 | Premium hens · Server-wide events · Share cards | 1,000+ registered users; 7-day retention > 35%; 100 referred via share card |
-
-### Phase 4 — Ecosystem (Month 4+)
-
-| Milestone | Target |
-|---|---|
-| Supplier network launch | First physical redemptions completed |
-| 10,000 registered users | Monthly active rate > 50% |
-| `$AIGG` price stabilisation | Price supported by redemption arbitrage |
-| Brand partnership (Tier 1) | First named food brand integration |
-
-### Scale Targets
-
-| Milestone | Timeline | Key Metric |
-|---|---|---|
-| Internal test | Week 2 | 10 users, all EGGS growing |
-| Public launch | Week 4 | 100 users, steal live |
-| Retention validated | Week 8 | 500 users, 7-day retention > 40% |
-| Viral loop active | Week 12 | 1,000–3,000 users, K-factor > 0.3 |
-| Supplier live | Month 4 | 10,000 users, first redemptions |
+> **Raise chickens. Steal eggs. Cash out in $AIGG.**
+>
+> *The first AI-native onchain game. Not just played through AI. Operated by AI.*
 
 ---
 
-## 11. Conclusion
-
-AIggs is not a blockchain game with AI features. It is an AI-native economic protocol with a game as its interface.
-
-The game solves the distribution problem of blockchain: it spreads through AI tool ecosystems that already have hundreds of millions of users. It rebuilds the trust foundation for on-chain gaming: permanent protocol-owned liquidity that no team can touch. It solves the value problem of crypto games: tokens redeemable for a physical commodity with $320B annual global demand.
-
-And the "Game as Skill" innovation makes AIggs the first on-chain game truly embedded within the AI tool ecosystem — users don't need to download anything, don't need to register anywhere; they just tell their AI to start farming and begin accumulating real on-chain value.
-
-The mechanics — hens, eggs, stealing, rivals — are deliberately simple. Simplicity is not a constraint; it is the feature. Every element of the design passes one test: *can you explain it in one sentence?*
-
-> **Raise chickens. Steal eggs. Redeem for real eggs with $AIGG.**
-
-That is the whole game. The rest is architecture.
-
----
-
-## Appendix A — Key Metrics Reference
-
-| Metric | Definition | Healthy | Intervention Required |
-|---|---|---|---|
-| Daily report open rate | Users querying report / total registered | > 50% | < 30% |
-| Day-1 retention | Users active on Day 2 / Day 1 registrations | > 60% | < 40% |
-| Robbed return rate | Robbed users returning same day | > 50% | < 30% |
-| Weekly pay conversion | Users spending `$AIGG` at least once / week | > 5% | < 2% |
-
-## Appendix B — Glossary
+## Appendix · Glossary
 
 | Term | Definition |
 |---|---|
 | EGGS | Off-chain game points; non-transferable; produced by hens |
-| `$AIGG` | ERC-20 token on Base L2; tradeable; redeemable for real eggs |
-| Farm Code | Unique player identifier (e.g., `farm-x7k2-9p3m`); stored in AI tool memory |
+| `$AIGG` | ERC-20 token on Base; tradeable |
+| Farm Code | Unique player identifier; stored in AI tool memory |
 | Permanent LP | Liquidity pool tokens burned to zero address; cannot be retrieved |
 | Morning Report | Daily AI-delivered farm summary; primary retention surface |
-| Rival | Auto-assigned when two players steal from each other 3+ times |
 | MCP | Model Context Protocol; open standard for AI tool integrations |
 | Skill | Installable AI tool capability package; AIggs distributed as a Skill |
-| Supplier | Entity staking `$AIGG` to fulfil physical egg redemption orders |
+| Meta-AI Director | The orchestrating agent of AIggs' AI Game Operating System |
+| Design AI | Specialised agent for game balance monitoring and mechanic proposals |
+| Operations AI | Specialised agent for social media, retention, and economic monitoring |
+| Decision AI | Specialised agent for proposal evaluation and risk control |
+| Confidence Tier | Scoring system that determines whether a decision is auto-executed or requires human approval |
+| On-chain Event Sourcing | All AI decisions recorded as immutable on-chain events; traceable and reversible |
 | Warehouse Cap | Maximum EGGS storable; production pauses (not burns) at cap |
 
 ---
 
-*AIggs Whitepaper v1.0 · aiggs.xyz*
+*AIggs Whitepaper v2.0 · aiggs.xyz*
 *This document is for informational purposes only and does not constitute financial advice or an offer of securities.*
