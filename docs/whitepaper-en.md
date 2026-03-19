@@ -415,26 +415,4 @@ This is not a vision for the future. It is a buildable architecture, grounded in
 
 ---
 
-## Appendix · Glossary
-
-| Term | Definition |
-|---|---|
-| EGGS | Off-chain game points; non-transferable; produced by hens |
-| `$AIGG` | ERC-20 token on Base; tradeable |
-| Farm Code | Unique player identifier; stored in AI tool memory |
-| Permanent LP | Liquidity pool tokens burned to zero address; cannot be retrieved |
-| Morning Report | Daily AI-delivered farm summary; primary retention surface |
-| MCP | Model Context Protocol; open standard for AI tool integrations |
-| Skill | Installable AI tool capability package; AIggs distributed as a Skill |
-| Meta-AI Director | The orchestrating agent of AIggs' AI Game Operating System |
-| Design AI | Specialised agent for game balance monitoring and mechanic proposals |
-| Operations AI | Specialised agent for social media, retention, and economic monitoring |
-| Decision AI | Specialised agent for proposal evaluation and risk control |
-| Confidence Tier | Scoring system that determines whether a decision is auto-executed or requires human approval |
-| On-chain Event Sourcing | All AI decisions recorded as immutable on-chain events; traceable and reversible |
-| Warehouse Cap | Maximum EGGS storable; production pauses (not burns) at cap |
-
----
-
 *AIggs Whitepaper v2.0 · aiggs.xyz*
-*This document is for informational purposes only and does not constitute financial advice or an offer of securities.*
