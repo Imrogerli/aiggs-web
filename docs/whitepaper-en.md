@@ -302,7 +302,47 @@ Manages three domains:
 **Decision AI**
 Handles player-submitted proposals and parameter adjustment recommendations from Design AI. All decisions go through the confidence-tier system (see below); outcomes are published openly and verifiable on-chain.
 
-### 7.3 Confidence-Tier Decision Framework
+### 7.3 AI Operations Team: Interactive Agent Roles
+
+AIggs has no traditional operations team. The game's daily operations are handled full-time by four AI Agents, each with clear responsibilities and the ability to interact directly with players.
+
+**🎯 Meta-AI Director**
+- Responsibility: Global strategy, cross-agent coordination, version decisions, overall player experience evaluation
+- Player interaction: Players can submit improvement suggestions directly to the Director and query the reasoning behind any decision
+- Authority: All specialised agent outputs pass through Director review before execution; holds emergency circuit-breaker authority
+
+**🎨 Design AI · Numerics Designer**
+- Responsibility: Real-time monitoring of game health — steal success rates, EGGS supply/demand ratio, veteran vs. new player earning gaps
+- Player interaction: Players can query current game metrics and understand the rationale behind the latest parameter adjustments
+- Typical action: When steal success rates deviate from target range, automatically generates adjustment proposals executed by confidence tier
+
+**📣 Operations AI · Ops Manager**
+- Responsibility: Social media publishing, user retention, dormant farm re-engagement, economic anomaly detection
+- Player interaction: Players can receive personalised daily reports, check farm rankings, and access server-wide operational data
+- Typical action: Identifies farms inactive for 3+ days and pushes personalised recall messages via AI tools; auto-publishes daily steal leaderboards
+
+**⚖️ Decision AI · Governance Officer**
+- Responsibility: Proposal evaluation, risk control, outcome tracking
+- Player interaction: Players can submit game improvement proposals and receive assessment opinions with impact analysis
+- Typical action: Upon receiving a player proposal, synthesises historical data and simulation tests to generate an evaluation report, processed by confidence tier
+
+**Agent Collaboration Flow:**
+
+```
+Player submits suggestion → Decision AI evaluates
+                                ↓
+                  Design AI simulates numeric impact
+                                ↓
+                  Meta-AI Director reviews
+                                ↓
+                  Operations AI announces execution result
+                                ↓
+                  On-chain record (traceable & verifiable)
+```
+
+**Open Interaction Principle:** Each Agent exposes an independent interaction endpoint via the MCP protocol. Players can talk directly to any Agent from any AI tool — this is not simulated role-play, but genuine querying and operating of the game system. All interaction records are stored on-chain, transparent and auditable.
+
+### 7.4 Confidence-Tier Decision Framework
 
 AIggs' AI decision system does not pursue "zero human involvement" — it uses confidence scoring to determine the appropriate level of human intervention for each decision type:
 
@@ -322,13 +362,13 @@ Example decision tiers:
 | Major player proposal (mechanic change) | <60% | Human approval required |
 | Compliance / safety decisions | All | Human approval required |
 
-### 7.4 On-Chain Event Sourcing
+### 7.5 On-Chain Event Sourcing
 
 Blockchain gives AIggs a native event sourcing infrastructure. Every AI decision execution is recorded as an on-chain event — any historical state is traceable, verifiable, and reversible when necessary.
 
 This means AI governance is transparent. Any player can inspect which agent executed a decision, at what confidence level, and what outcome it produced. This is a level of governance transparency that centralised game companies cannot provide.
 
-### 7.5 Why AIggs Is the Ideal First Candidate for AI Governance
+### 7.6 Why AIggs Is the Ideal First Candidate for AI Governance
 
 The hardest problem in AI governance of complex games is the reward function: what is AI optimising for? What makes a "good game"?
 
@@ -343,7 +383,7 @@ AIggs answers this through deliberate design simplicity. The game's health is fu
 
 Clear objective functions make AIggs the most viable candidate for genuine AI-complete operations under current technology. This is not narrative — it is the result of an architectural choice.
 
-### 7.6 MCP Integration
+### 7.7 MCP Integration
 
 AIggs ships as a native MCP (Model Context Protocol) server. Any MCP-compatible AI tool can install the AIggs server and access all game functions as native tools:
 
@@ -360,7 +400,7 @@ AIggs ships as a native MCP (Model Context Protocol) server. Any MCP-compatible 
 }
 ```
 
-### 7.7 Multi-Platform Compatibility
+### 7.8 Multi-Platform Compatibility
 
 | Platform | Integration | Farm Persistence |
 |---|---|---|
@@ -369,7 +409,7 @@ AIggs ships as a native MCP (Model Context Protocol) server. Any MCP-compatible 
 | 文心一言 (Baidu) | Plugin API | Server-side by phone |
 | Any MCP client | Native MCP Server | MCP config file |
 
-### 7.8 The Agent Economy Thesis
+### 7.9 The Agent Economy Thesis
 
 AIggs is an early instantiation of a broader shift: **AI Agents don't just execute tasks for users — they manage real economic assets on their behalf, and make operational decisions on behalf of entire products.**
 
