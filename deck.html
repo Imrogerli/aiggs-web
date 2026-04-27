@@ -1,1027 +1,648 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIggs — Partnership Deck</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>AIggs 对外合作 Deck | Where AI Hatches Value</title>
+<meta name="description" content="AIggs 对外合作资料：AI Agent Economy、合作场景、增长飞轮、商业化模型与品牌联动方案。"/>
+<meta name="keywords" content="AIggs, AI Agent Economy, partnership deck, AI Agent, Web3, AI game"/>
+<meta name="author" content="AIggs Team"/>
+<meta name="theme-color" content="#baff20"/>
+<meta property="og:title" content="AIggs 对外合作 Deck"/>
+<meta property="og:description" content="Where AI Hatches Value. AIggs 面向生态、品牌、工具平台与 Web3 项目的合作资料。"/>
+<meta property="og:image" content="https://aiggs.xyz/assets/aiggs-logo-board.png"/>
+<meta property="og:url" content="https://aiggs.xyz/deck"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://aiggs.xyz/deck"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --green: #C8FF00;
-    --gold: #FFB800;
-    --bg: #050505;
-    --surface: #0F0F0F;
-    --surface2: #1A1A1A;
-    --text: #FFFFFF;
-    --muted: #666666;
-    --border: #222222;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html, body {
-    width: 100%; height: 100%;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    overflow: hidden;
-    user-select: none;
-  }
-
-  /* ─── Progress bar ─── */
-  #progress-bar {
-    position: fixed; top: 0; left: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--green), var(--gold));
-    transition: width 0.4s ease;
-    z-index: 100;
-    width: 11.11%;
-  }
-
-  /* ─── Slide container ─── */
-  #slides {
-    width: 100%; height: 100%;
-    position: relative;
-  }
-
-  .slide {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    padding: 60px 80px;
-    opacity: 0;
-    transform: translateX(60px);
-    pointer-events: none;
-  }
-  .slide.active {
-    opacity: 1; transform: translateX(0);
-    pointer-events: all;
-    transition: none;
-  }
-
-  /* ─── Dot navigation ─── */
-  #dots {
-    position: fixed; right: 28px; top: 50%;
-    transform: translateY(-50%);
-    display: flex; flex-direction: column; gap: 10px;
-    z-index: 100;
-  }
-  .dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--border);
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  .dot.active {
-    background: var(--green);
-    transform: scale(1.5);
-  }
-
-  /* ─── Slide counter ─── */
-  #counter {
-    position: fixed; bottom: 28px; right: 48px;
-    font-size: 12px; color: var(--muted);
-    letter-spacing: 1px;
-    z-index: 100;
-  }
-
-  /* ─── Nav arrows ─── */
-  .nav-btn {
-    position: fixed; top: 50%;
-    transform: translateY(-50%);
-    background: none; border: 1px solid var(--border);
-    color: var(--muted); width: 40px; height: 40px;
-    border-radius: 50%; cursor: pointer;
-    font-size: 18px; transition: all 0.2s;
-    z-index: 100;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .nav-btn:hover { border-color: var(--green); color: var(--green); }
-  #prev-btn { left: 20px; }
-  #next-btn { right: 50px; }
-
-  /* ═══════════════════════════
-     SHARED TYPOGRAPHY
-  ═══════════════════════════ */
-  .section-label {
-    font-size: 11px; letter-spacing: 3px; color: var(--green);
-    text-transform: uppercase; margin-bottom: 14px;
-  }
-  .section-title {
-    font-size: 46px; font-weight: 800; line-height: 1.08;
-    letter-spacing: -1.5px; margin-bottom: 44px;
-  }
-
-  /* ═══════════════════════════
-     SLIDE 1 — HERO
-  ═══════════════════════════ */
-  .hero-layout {
-    display: flex; align-items: center; justify-content: space-between;
-    width: 100%; max-width: 1200px; gap: 60px;
-  }
-  .hero-left { flex: 1; }
-  .hero-tag {
-    display: inline-block;
-    border: 1px solid var(--green); color: var(--green);
-    font-size: 11px; letter-spacing: 2px;
-    padding: 5px 14px; border-radius: 100px;
-    margin-bottom: 28px; text-transform: uppercase;
-  }
-  .hero-title {
-    font-size: 72px; font-weight: 800; line-height: 1;
-    letter-spacing: -2px; margin-bottom: 10px;
-  }
-  .hero-title .g { color: var(--green); }
-  .hero-sub {
-    font-size: 20px; color: var(--muted);
-    letter-spacing: 3px; text-transform: uppercase;
-    margin-bottom: 44px; font-weight: 300;
-  }
-  .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; }
-  .badge {
-    padding: 5px 14px; border-radius: 100px;
-    font-size: 11px; font-weight: 600; letter-spacing: 1px;
-    border: 1px solid;
-  }
-  .badge-green { border-color: var(--green); color: var(--green); }
-  .badge-gold  { border-color: var(--gold); color: var(--gold); }
-  .badge-dim   { border-color: #333; color: var(--muted); }
-
-  /* Egg */
-  .egg-wrap { width: 280px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-  .egg-float { animation: float 3.6s ease-in-out infinite; }
-  .egg-glow-wrap { animation: pulse-glow 3.6s ease-in-out infinite; }
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-18px)} }
-  @keyframes pulse-glow {
-    0%,100%{ filter: drop-shadow(0 0 20px rgba(255,184,0,.4)); }
-    50%{ filter: drop-shadow(0 0 55px rgba(255,184,0,.85)); }
-  }
-  .crack-anim { animation: crack 5s ease-in-out infinite; }
-  @keyframes crack { 0%,85%,100%{opacity:.55} 92%{opacity:1} }
-
-  /* ═══════════════════════════
-     SLIDE 2 — MARKET
-  ═══════════════════════════ */
-  .market-grid {
-    display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
-    width: 100%; max-width: 1100px;
-  }
-  .market-stat {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 20px; padding: 34px 26px; position: relative; overflow: hidden;
-  }
-  .market-stat::before {
-    content:''; position:absolute; top:0; left:0; right:0; height:2px;
-    background: linear-gradient(90deg, var(--green), transparent);
-  }
-  .stat-num {
-    font-size: 54px; font-weight: 800; line-height: 1; margin-bottom: 8px;
-  }
-  .c-green { color: var(--green); }
-  .c-gold  { color: var(--gold); }
-  .stat-label { font-size: 14px; color: var(--muted); line-height: 1.4; }
-  .stat-sub { font-size: 11px; color: var(--muted); margin-top: 4px; opacity: .6; }
-  .market-insight {
-    grid-column: 1 / -1;
-    background: linear-gradient(135deg, rgba(200,255,0,.05), rgba(255,184,0,.05));
-    border: 1px solid rgba(200,255,0,.2); border-radius: 14px;
-    padding: 18px 26px; font-size: 14px; color: var(--text); line-height: 1.65;
-  }
-  .market-insight strong { color: var(--green); }
-
-  /* ═══════════════════════════
-     SLIDE 3 — PRODUCT
-  ═══════════════════════════ */
-  .features-grid {
-    display: grid; grid-template-columns: repeat(3,1fr); gap: 18px;
-  }
-  .feat-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 16px; padding: 26px;
-    transition: border-color .3s, transform .3s;
-  }
-  .feat-card:hover { border-color: var(--green); transform: translateY(-4px); }
-  .feat-icon { font-size: 30px; margin-bottom: 12px; display: block; }
-  .feat-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-  .feat-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
-
-  /* ═══════════════════════════
-     SLIDE 4 — HOW IT WORKS
-  ═══════════════════════════ */
-  .flow-steps {
-    display: flex; align-items: flex-start;
-    width: 100%; max-width: 1100px; margin-top: 36px;
-  }
-  .flow-step { flex: 1; text-align: center; position: relative; }
-  .flow-step:not(:last-child)::after {
-    content:'';
-    position:absolute; top:35px; left:58%; width:84%; height:1px;
-    background: linear-gradient(90deg, var(--green), var(--border));
-  }
-  .step-num {
-    width: 70px; height: 70px; border-radius: 50%;
-    background: var(--surface); border: 2px solid var(--green);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; font-weight: 800; color: var(--green);
-    margin: 0 auto 18px;
-  }
-  .step-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
-  .step-desc { font-size: 12px; color: var(--muted); line-height: 1.5; padding: 0 6px; }
-  .step-tag {
-    display: inline-block; margin-top: 10px;
-    padding: 3px 10px; border-radius: 100px;
-    font-size: 9px; letter-spacing: 1.5px;
-    border: 1px solid var(--gold); color: var(--gold);
-  }
-
-  /* ═══════════════════════════
-     SLIDE 5 — TOKEN ECONOMICS
-  ═══════════════════════════ */
-  .token-layout {
-    display: grid; grid-template-columns: 1.1fr 1fr;
-    gap: 48px; width: 100%; max-width: 1100px; align-items: start;
-  }
-  .asset-layers { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
-  .asset-layer {
-    border-radius: 14px; padding: 18px 22px;
-    display: flex; align-items: center; gap: 14px; border: 1px solid;
-    transition: transform .3s;
-  }
-  .asset-layer:hover { transform: translateX(6px); }
-  .layer-1 { border-color: var(--muted); background: rgba(255,255,255,.02); }
-  .layer-2 { border-color: var(--gold); background: rgba(255,184,0,.04); }
-  .layer-3 { border-color: var(--green); background: rgba(200,255,0,.04); }
-  .layer-icon { font-size: 26px; flex-shrink: 0; }
-  .layer-name { font-size: 16px; font-weight: 700; }
-  .layer-desc { font-size: 11px; color: var(--muted); margin-top: 2px; }
-
-  .deflation-title {
-    font-size: 11px; letter-spacing: 2.5px; color: var(--green);
-    text-transform: uppercase; margin-bottom: 18px;
-  }
-  .defl-row { margin-bottom: 16px; }
-  .defl-labels {
-    display: flex; justify-content: space-between;
-    font-size: 12px; margin-bottom: 5px;
-  }
-  .defl-labels span:last-child { color: var(--green); font-weight: 700; }
-  .defl-track {
-    height: 5px; background: var(--border); border-radius: 100px; overflow: hidden;
-  }
-  .defl-fill {
-    height: 100%; border-radius: 100px;
-    background: linear-gradient(90deg, var(--green), var(--gold));
-    width: 0; transition: width 1.2s ease;
-  }
-  .lp-note {
-    margin-top: 20px; padding: 14px 18px;
-    background: rgba(200,255,0,.04); border: 1px solid rgba(200,255,0,.18);
-    border-radius: 10px; font-size: 11px; color: var(--muted); line-height: 1.6;
-  }
-  .lp-note span { color: var(--green); font-weight: 600; }
-
-  /* ═══════════════════════════
-     SLIDE 6 — REVENUE
-  ═══════════════════════════ */
-  .revenue-layout {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 48px; width: 100%; max-width: 1100px; align-items: start;
-  }
-  .rev-streams { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
-  .rev-stream {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 14px; padding: 18px 22px;
-    display: flex; align-items: center; gap: 14px;
-  }
-  .rev-pct { font-size: 26px; font-weight: 800; color: var(--green); flex-shrink: 0; min-width: 60px; }
-  .rev-name { font-size: 13px; font-weight: 600; }
-  .rev-desc { font-size: 11px; color: var(--muted); margin-top: 3px; }
-
-  .chart-title {
-    font-size: 11px; letter-spacing: 2px; color: var(--muted);
-    text-transform: uppercase; margin-bottom: 18px;
-  }
-  .bar-chart {
-    display: flex; align-items: flex-end; gap: 16px;
-    height: 150px; padding-bottom: 30px; position: relative;
-  }
-  .bar-chart::after {
-    content:''; position:absolute; bottom:30px; left:0; right:0;
-    height:1px; background: var(--border);
-  }
-  .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; }
-  .bar {
-    width: 100%; border-radius: 6px 6px 0 0;
-    background: linear-gradient(180deg, var(--green), rgba(200,255,0,.3));
-    height: 0; transition: height 1.2s ease; position: relative;
-  }
-  .bar-val {
-    position:absolute; top:-20px; left:50%; transform:translateX(-50%);
-    font-size: 10px; font-weight: 700; color: var(--green); white-space: nowrap;
-  }
-  .bar-label { margin-top: 8px; font-size: 10px; color: var(--muted); text-align: center; }
-  .rev-summary {
-    padding: 18px 22px; background: var(--surface);
-    border: 1px solid var(--border); border-radius: 14px; margin-top: 10px;
-  }
-  .rev-summary-label {
-    font-size: 11px; color: var(--muted); letter-spacing: 1.5px;
-    text-transform: uppercase; margin-bottom: 12px;
-  }
-  .rev-summary-nums { display: flex; gap: 24px; flex-wrap: wrap; }
-  .rev-num-big { font-size: 22px; font-weight: 800; }
-  .rev-num-sub { font-size: 10px; color: var(--muted); margin-top: 2px; }
-
-  /* ═══════════════════════════
-     SLIDE 7 — ROADMAP
-  ═══════════════════════════ */
-  .roadmap-wrap { width: 100%; max-width: 1050px; }
-  .roadmap-line {
-    display: flex; gap: 0; position: relative; margin-top: 44px;
-  }
-  .roadmap-line::before {
-    content:'';
-    position:absolute; top:29px; left:40px; right:40px;
-    height:2px;
-    background: linear-gradient(90deg, var(--green) 28%, var(--gold) 48%, var(--border) 75%);
-  }
-  .rm-item {
-    flex: 1; display: flex; flex-direction: column;
-    align-items: center; text-align: center; padding: 0 6px;
-  }
-  .rm-dot {
-    width: 58px; height: 58px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 10px; font-weight: 800; letter-spacing: .5px;
-    margin-bottom: 14px; position: relative; z-index: 1;
-  }
-  .rm-dot.done { background: var(--green); color: #000; }
-  .rm-dot.active {
-    background: var(--gold); color: #000;
-    animation: rm-pulse 2s infinite;
-  }
-  @keyframes rm-pulse {
-    0%,100%{ box-shadow: 0 0 0 5px rgba(255,184,0,.18); }
-    50%{ box-shadow: 0 0 0 12px rgba(255,184,0,.05); }
-  }
-  .rm-dot.soon { background: var(--surface); color: var(--muted); border: 2px solid var(--border); }
-  .rm-version { font-size: 15px; font-weight: 800; margin-bottom: 5px; }
-  .rm-phase { font-size: 11px; color: var(--muted); margin-bottom: 10px; }
-  .rm-features { display: flex; flex-direction: column; gap: 4px; }
-  .rm-feat {
-    font-size: 10px; color: var(--muted);
-    background: var(--surface); border-radius: 5px;
-    padding: 3px 7px; border: 1px solid var(--border);
-  }
-  .rm-feat.done  { border-color: rgba(200,255,0,.3); color: var(--green); }
-  .rm-feat.active{ border-color: rgba(255,184,0,.3); color: var(--gold); }
-
-  /* ═══════════════════════════
-     SLIDE 8 — PARTNERSHIP
-  ═══════════════════════════ */
-  .partner-grid {
-    display: grid; grid-template-columns: repeat(2,1fr); gap: 18px;
-    width: 100%; max-width: 920px; margin-top: 6px;
-  }
-  .partner-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 20px; padding: 28px;
-    transition: all .3s; position: relative; overflow: hidden;
-  }
-  .partner-card::before {
-    content:''; position:absolute; inset:0;
-    background: radial-gradient(circle at 0% 0%, rgba(200,255,0,.04), transparent 60%);
-    opacity:0; transition: opacity .3s;
-  }
-  .partner-card:hover { border-color: var(--green); transform: translateY(-4px); }
-  .partner-card:hover::before { opacity:1; }
-  .partner-icon { font-size: 32px; margin-bottom: 14px; display: block; }
-  .partner-name { font-size: 17px; font-weight: 700; margin-bottom: 9px; }
-  .partner-desc { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
-  .partner-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-  .ptag {
-    font-size: 10px; padding: 3px 9px; border-radius: 100px;
-    border: 1px solid var(--border); color: var(--muted);
-  }
-  .ptag.g { border-color: rgba(200,255,0,.3); color: var(--green); }
-  .ptag.o { border-color: rgba(255,184,0,.3); color: var(--gold); }
-
-  /* ═══════════════════════════
-     SLIDE 9 — CONTACT
-  ═══════════════════════════ */
-  .contact-layout {
-    display: flex; flex-direction: column; align-items: center;
-    text-align: center; max-width: 700px;
-  }
-  .contact-egg { margin-bottom: 28px; animation: float 3.6s ease-in-out infinite; }
-  .contact-title {
-    font-size: 52px; font-weight: 800; line-height: 1.08;
-    letter-spacing: -1.5px; margin-bottom: 14px;
-  }
-  .contact-title span { color: var(--green); }
-  .contact-sub {
-    font-size: 17px; color: var(--muted); margin-bottom: 44px; line-height: 1.55;
-  }
-  .contact-links { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
-  .contact-link {
-    padding: 13px 26px; border-radius: 12px;
-    font-size: 13px; font-weight: 600;
-    text-decoration: none; transition: all .25s;
-    display: flex; align-items: center; gap: 7px;
-  }
-  .contact-link.primary { background: var(--green); color: #000; }
-  .contact-link.primary:hover { background: #d4ff1a; transform: translateY(-2px); }
-  .contact-link.secondary { border: 1px solid var(--border); color: var(--text); }
-  .contact-link.secondary:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
-  .contact-domain {
-    margin-top: 36px; font-size: 12px; color: var(--muted); letter-spacing: 2px;
-  }
-  .contact-domain strong { color: var(--text); }
+:root{
+  color-scheme:dark;
+  --bg:#030402;
+  --panel:#0b0e08;
+  --panel-2:#11160c;
+  --ink:#f8ffe8;
+  --muted:#b7c19b;
+  --dim:#77815e;
+  --line:rgba(220,255,132,.18);
+  --line-2:rgba(255,255,255,.1);
+  --lime:#baff20;
+  --leaf:#72d31b;
+  --gold:#ffd23a;
+  --orange:#ff9a2b;
+  --cyan:#66fff2;
+  --violet:#b58cff;
+  --danger:#ff6f61;
+  --radius:8px;
+  --shadow:0 30px 100px rgba(0,0,0,.44);
+  font-family:Inter,"Noto Sans SC",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--ink)}
+body::selection{background:var(--lime);color:#071000}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+img{max-width:100%;display:block}
+.deck{position:relative;min-height:100vh;overflow:hidden}
+#aiggs-field{position:fixed;inset:0;z-index:-3;width:100%;height:100%;background:#030402}
+.grain,.scan{position:fixed;inset:0;pointer-events:none}
+.grain{z-index:-2;opacity:.09;background-image:repeating-radial-gradient(circle at 0 0,rgba(255,255,255,.8) 0 1px,transparent 1px 5px);mix-blend-mode:screen}
+.scan{z-index:-1;background:linear-gradient(rgba(186,255,32,.04) 1px,transparent 1px);background-size:100% 48px;mask-image:linear-gradient(to bottom,transparent,black 14%,black 86%,transparent)}
+.topbar{position:fixed;inset:18px 18px auto;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:58px;padding:9px 11px 9px 14px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(3,4,2,.72);backdrop-filter:blur(18px);box-shadow:0 20px 70px rgba(0,0,0,.28)}
+.brand{display:inline-flex;align-items:center;gap:11px;font-weight:900;letter-spacing:0}
+.brand-logo{position:relative;width:36px;height:36px;border:1px solid rgba(186,255,32,.6);border-radius:50% 50% 48% 48%/58% 58% 42% 42%;background:radial-gradient(circle at 50% 72%,var(--gold) 0 16%,rgba(255,210,58,.28) 17% 34%,transparent 35%),linear-gradient(145deg,#161b0d,#020402);box-shadow:0 0 18px rgba(186,255,32,.5),inset 0 0 18px rgba(255,210,58,.15)}
+.brand-logo:before{content:"";position:absolute;top:8px;left:8px;width:18px;height:9px;border-top:2px solid #f8ffd2;border-left:2px solid #f8ffd2;border-right:2px solid #f8ffd2;clip-path:polygon(0 0,28% 62%,51% 18%,72% 60%,100% 0,100% 100%,0 100%)}
+.brand-logo:after{content:"";position:absolute;left:9px;right:9px;bottom:4px;height:5px;border:2px solid var(--leaf);border-top:0;border-radius:50%;filter:drop-shadow(0 0 8px var(--leaf))}
+.nav{display:flex;align-items:center;gap:5px}
+.nav a,.deck-action{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:9px 12px;border-radius:7px;color:var(--muted);font-size:13px;font-weight:800;transition:background .18s ease,color .18s ease,transform .18s ease}
+.nav a:hover,.deck-action:hover{background:rgba(255,255,255,.08);color:var(--ink);transform:translateY(-1px)}
+.deck-action{border:1px solid rgba(186,255,32,.45);background:rgba(186,255,32,.12);color:var(--lime)}
+.progress{position:fixed;left:0;top:0;z-index:30;width:100%;height:3px;background:rgba(255,255,255,.08)}
+.progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--lime),var(--gold),var(--cyan));box-shadow:0 0 18px var(--lime)}
+.dots{position:fixed;right:22px;top:50%;z-index:25;display:grid;gap:10px;transform:translateY(-50%)}
+.dot{width:9px;height:9px;border:1px solid rgba(186,255,32,.5);border-radius:99px;background:rgba(255,255,255,.08);cursor:pointer;transition:height .2s ease,background .2s ease,box-shadow .2s ease}
+.dot.is-active{height:28px;background:var(--lime);box-shadow:0 0 18px rgba(186,255,32,.75)}
+.slide{position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:center;scroll-margin-top:76px;padding:112px clamp(22px,5vw,76px) 58px;overflow:hidden}
+.slide-inner{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;scroll-margin-top:96px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,.7fr);align-items:center;gap:clamp(26px,5vw,78px)}
+.kicker{margin:0 0 16px;color:var(--lime);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+h1,h2,h3,p{margin-top:0}
+h1{margin-bottom:18px;font-size:clamp(52px,9vw,124px);line-height:.88;font-weight:900;letter-spacing:0}
+h2{max-width:980px;margin-bottom:18px;font-size:clamp(36px,6vw,76px);line-height:.96;font-weight:900;letter-spacing:0}
+h3{margin-bottom:10px;font-size:22px;line-height:1.14;font-weight:900}
+.lead{max-width:790px;margin:0;color:var(--muted);font-size:clamp(17px,2.1vw,23px);line-height:1.65}
+.grad{background:linear-gradient(105deg,#fff 0%,#faffcf 22%,var(--lime) 54%,var(--gold) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-word{display:block;color:var(--lime);text-shadow:0 0 36px rgba(186,255,32,.32)}
+.hero-sub{margin:22px 0 0;font-size:clamp(17px,2.2vw,26px);letter-spacing:.22em;color:#eefbd5;text-transform:uppercase}
+.hero-copy{max-width:710px;margin:28px 0 30px;color:var(--muted);font-size:18px;line-height:1.75}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:13px 18px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,255,255,.055);font-weight:900;cursor:pointer;transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.btn:hover{transform:translateY(-2px);border-color:rgba(186,255,32,.7);background:rgba(186,255,32,.12)}
+.btn.primary{border-color:transparent;background:var(--lime);color:#071000}
+.btn-icon{display:grid;place-items:center;width:24px;height:24px;border-radius:6px;background:rgba(0,0,0,.18)}
+.logo-stage{position:relative;display:grid;place-items:center;min-height:540px;border:1px solid var(--line);border-radius:var(--radius);background:radial-gradient(circle at 50% 48%,rgba(186,255,32,.18),transparent 34%),linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025));box-shadow:var(--shadow);overflow:hidden}
+.logo-stage:before{content:"";position:absolute;inset:22px;border:1px solid rgba(186,255,32,.12);border-radius:var(--radius)}
+.orbital{position:absolute;width:72%;aspect-ratio:1;border:1px dashed rgba(186,255,32,.26);border-radius:50%;animation:spin 22s linear infinite}
+.orbital:after,.orbital:before{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:var(--lime);box-shadow:0 0 20px var(--lime)}
+.orbital:before{left:14%;top:10%}
+.orbital:after{right:18%;bottom:9%;background:var(--gold);box-shadow:0 0 20px var(--gold)}
+.aiggs-egg{position:relative;width:clamp(168px,24vw,260px);aspect-ratio:.78;border:3px solid #fbffd2;border-radius:50% 50% 47% 47%/58% 58% 42% 42%;background:radial-gradient(circle at 50% 70%,rgba(255,210,58,.92) 0 13%,rgba(255,210,58,.36) 14% 31%,transparent 32%),radial-gradient(circle at 50% 72%,rgba(255,210,58,.45),transparent 43%),linear-gradient(160deg,rgba(255,255,255,.08),rgba(0,0,0,.36));filter:drop-shadow(0 0 32px rgba(186,255,32,.48));animation:float 3.8s ease-in-out infinite}
+.aiggs-egg:before{content:"";position:absolute;top:12%;left:22%;width:56%;height:20%;border-top:4px solid #fbffd2;border-left:4px solid #fbffd2;border-right:4px solid #fbffd2;clip-path:polygon(0 0,18% 70%,36% 35%,52% 86%,70% 38%,100% 0,100% 100%,0 100%)}
+.aiggs-egg:after{content:"";position:absolute;left:17%;right:17%;bottom:2%;height:26px;border:4px solid var(--leaf);border-top:0;border-radius:50%;filter:drop-shadow(0 0 12px var(--leaf))}
+.eye{position:absolute;top:45%;width:18px;height:38px;border-radius:99px;background:var(--lime);box-shadow:0 0 18px var(--lime);animation:blink 4.4s ease-in-out infinite}
+.eye.left{left:31%}.eye.right{right:31%}
+.brand-board{position:absolute;left:18px;right:18px;bottom:18px;display:grid;grid-template-columns:86px 1fr;gap:14px;align-items:center;padding:14px;border:1px solid rgba(255,255,255,.09);border-radius:var(--radius);background:rgba(3,4,2,.72);backdrop-filter:blur(10px)}
+.brand-board img{width:86px;height:58px;object-fit:cover;border-radius:6px;object-position:left top}
+.brand-board b{display:block;margin-bottom:3px;font-size:13px}
+.brand-board span{display:block;color:var(--muted);font-size:12px;line-height:1.35}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{position:relative;min-width:0;padding:24px;border:1px solid var(--line-2);border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.032));box-shadow:0 16px 70px rgba(0,0,0,.18);overflow:hidden;transition:transform .22s ease,border-color .22s ease,background .22s ease}
+.card:hover{transform:translateY(-4px);border-color:rgba(186,255,32,.45);background:linear-gradient(180deg,rgba(186,255,32,.1),rgba(255,255,255,.036))}
+.card:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--accent,var(--lime)),transparent);opacity:.8}
+.card p{margin:0;color:var(--muted);line-height:1.65}
+.label{display:inline-flex;align-items:center;gap:7px;margin-bottom:18px;color:var(--accent,var(--lime));font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.label:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent,var(--lime));box-shadow:0 0 16px var(--accent,var(--lime))}
+.stat{display:flex;flex-direction:column;gap:8px;min-height:170px;justify-content:flex-end}
+.stat strong{font-size:clamp(38px,5vw,64px);line-height:.9;font-weight:900;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:14px;font-weight:800}
+.value-loop{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;min-height:620px;margin-top:30px}
+.loop-card{min-height:245px;display:flex;flex-direction:column;justify-content:flex-end}
+.loop-core{position:absolute;z-index:4;left:50%;top:50%;display:grid;place-items:center;width:clamp(160px,18vw,240px);aspect-ratio:1;border:1px solid rgba(186,255,32,.5);border-radius:50%;background:radial-gradient(circle at 50% 42%,rgba(255,210,58,.36),transparent 42%),rgba(3,4,2,.88);transform:translate(-50%,-50%);box-shadow:0 0 80px rgba(186,255,32,.25);text-align:center}
+.loop-core b{font-size:44px}
+.loop-core small{max-width:130px;color:var(--muted);font-size:12px;font-weight:800;text-transform:uppercase}
+.moving-dot{position:absolute;z-index:3;left:50%;top:50%;width:16px;height:16px;border-radius:50%;background:var(--lime);box-shadow:0 0 24px var(--lime);offset-path:path("M -270 -210 L 270 -210 L 270 210 L -270 210 Z");offset-rotate:0deg;animation:route 8s linear infinite}
+.moving-dot:nth-child(2){animation-delay:-2s;background:var(--cyan);box-shadow:0 0 24px var(--cyan)}
+.moving-dot:nth-child(3){animation-delay:-4s;background:var(--gold);box-shadow:0 0 24px var(--gold)}
+.moving-dot:nth-child(4){animation-delay:-6s;background:var(--danger);box-shadow:0 0 24px var(--danger)}
+.scenario{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start}
+.icon{display:grid;place-items:center;width:64px;height:64px;border:1px solid rgba(186,255,32,.35);border-radius:var(--radius);background:rgba(186,255,32,.08);color:var(--lime)}
+.icon svg{width:30px;height:30px}
+.hatchline{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;align-items:stretch;margin-top:28px}
+.hatch-step{position:relative;min-height:210px;padding:16px 12px;border:1px solid var(--line-2);border-radius:var(--radius);background:rgba(255,255,255,.045);text-align:center;overflow:hidden}
+.mini-egg{position:relative;width:62px;height:78px;margin:12px auto 18px;border:2px solid #faffcf;border-radius:50% 50% 47% 47%/58% 58% 42% 42%;background:radial-gradient(circle at 50% 68%,rgba(255,210,58,.8) 0 14%,transparent 34%),linear-gradient(160deg,rgba(255,255,255,.06),rgba(0,0,0,.42));filter:drop-shadow(0 0 12px rgba(186,255,32,.4))}
+.mini-egg.cracked:before{content:"";position:absolute;top:14px;left:12px;width:36px;height:14px;border-top:2px solid #faffcf;border-left:2px solid #faffcf;border-right:2px solid #faffcf;clip-path:polygon(0 0,22% 75%,45% 35%,64% 82%,100% 0,100% 100%,0 100%)}
+.mini-egg.dark{background:linear-gradient(160deg,#15180f,#030402);opacity:.8}
+.mini-egg.burst{box-shadow:0 0 0 22px rgba(255,210,58,.04),0 0 46px rgba(255,210,58,.54);animation:pulse 1.8s ease-in-out infinite}
+.hatch-step h3{font-size:15px}
+.hatch-step p{font-size:12px;color:var(--muted)}
+.chart-panel{display:grid;grid-template-columns:minmax(0,.9fr) minmax(320px,.7fr);gap:18px;align-items:stretch;margin-top:24px}
+.bars{display:grid;gap:14px}
+.bar{display:grid;grid-template-columns:110px 1fr 58px;gap:12px;align-items:center}
+.bar span{color:var(--muted);font-size:13px;font-weight:800}
+.track{height:36px;border:1px solid var(--line-2);border-radius:7px;background:rgba(255,255,255,.055);overflow:hidden}
+.fill{width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--accent,var(--lime)),color-mix(in srgb,var(--accent,var(--lime)) 55%,#fff));box-shadow:0 0 20px color-mix(in srgb,var(--accent,var(--lime)) 55%,transparent);transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.donut{position:relative;display:grid;place-items:center;min-height:320px}
+.ring{position:relative;width:min(260px,72vw);aspect-ratio:1;border-radius:50%;background:conic-gradient(var(--lime) 0 42%,var(--gold) 42% 68%,var(--cyan) 68% 84%,var(--violet) 84% 100%);filter:drop-shadow(0 0 30px rgba(186,255,32,.18));animation:spin 18s linear infinite}
+.ring:after{content:"";position:absolute;inset:17%;border-radius:50%;background:var(--panel);box-shadow:inset 0 0 0 1px var(--line)}
+.ring-label{position:absolute;text-align:center}
+.ring-label b{display:block;font-size:38px}
+.ring-label span{color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase}
+.legend{display:grid;gap:9px;margin-top:16px}
+.legend div{display:grid;grid-template-columns:12px 1fr auto;gap:9px;align-items:center;color:var(--muted);font-size:13px}
+.swatch{width:12px;height:12px;border-radius:3px;background:var(--accent)}
+.partner-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 18px}
+.tab{min-height:42px;padding:10px 14px;border:1px solid var(--line-2);border-radius:var(--radius);background:rgba(255,255,255,.045);cursor:pointer;font-weight:900;transition:background .18s ease,border-color .18s ease,color .18s ease}
+.tab.is-active{border-color:rgba(186,255,32,.62);background:rgba(186,255,32,.16);color:var(--lime)}
+.package{display:none;grid-template-columns:minmax(0,.72fr) minmax(0,1fr);gap:16px;align-items:stretch}
+.package.is-active{display:grid}
+.timeline{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:28px}
+.phase{min-height:260px}
+.phase b{display:block;margin-bottom:54px;color:var(--accent,var(--lime));font-size:13px;text-transform:uppercase}
+.phase h3{font-size:21px}
+.cta-grid{display:grid;grid-template-columns:minmax(0,.7fr) minmax(340px,.52fr);gap:18px;align-items:stretch;margin-top:28px}
+.contact-box{display:grid;gap:12px}
+.contact-row{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:13px;border:1px solid var(--line-2);border-radius:var(--radius);background:rgba(255,255,255,.04);font-weight:800}
+.contact-row span:first-child{color:var(--muted)}
+.toast{position:fixed;right:22px;bottom:22px;z-index:35;padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(3,4,2,.9);box-shadow:var(--shadow);opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .18s ease,transform .18s ease;font-weight:900}
+.toast.is-visible{opacity:1;transform:translateY(0)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+.delay-1{transition-delay:.12s}.delay-2{transition-delay:.24s}.delay-3{transition-delay:.36s}.delay-4{transition-delay:.48s}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes blink{0%,88%,100%{transform:scaleY(1)}92%{transform:scaleY(.12)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes route{to{offset-distance:100%}}
+@media(max-width:1100px){
+  .split,.chart-panel,.package,.cta-grid{grid-template-columns:1fr}
+  .cards.four,.timeline{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .logo-stage{min-height:470px}
+  .moving-dot{display:none}
+}
+@media(max-width:760px){
+  .topbar{inset:10px 10px auto}
+  .nav{display:none}
+  .deck-action{font-size:12px;padding-inline:10px}
+  .dots{display:none}
+  .slide{min-height:auto;padding:92px 18px 52px}
+  h1{font-size:clamp(44px,16vw,68px)}
+  h2{font-size:clamp(32px,12vw,48px)}
+  .hero-sub{letter-spacing:.1em}
+  .actions,.btn{width:100%}
+  .cards,.cards.two,.cards.four,.value-loop,.hatchline,.timeline{grid-template-columns:1fr}
+  .logo-stage{min-height:430px}
+  .brand-board{grid-template-columns:1fr}
+  .brand-board img{width:100%;height:88px}
+  .loop-core{position:relative;left:auto;top:auto;margin:0 auto 18px;transform:none}
+  .value-loop{min-height:auto}
+  .bar{grid-template-columns:1fr}
+  .contact-row{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
 </style>
 </head>
 <body>
+<canvas id="aiggs-field"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+<header class="topbar">
+  <a class="brand" href="#cover" aria-label="AIggs deck home">
+    <span class="brand-logo" aria-hidden="true"></span>
+    <span>AIggs</span>
+  </a>
+  <nav class="nav" aria-label="Deck navigation">
+    <a href="#why">机会</a>
+    <a href="#loop">飞轮</a>
+    <a href="#scenes">场景</a>
+    <a href="#packages">合作包</a>
+    <a href="#contact">联系</a>
+  </nav>
+  <a class="deck-action" href="#contact">Start Partnership</a>
+</header>
+<nav class="dots" id="dots" aria-label="Slide dots"></nav>
 
-<div id="progress-bar"></div>
-
-<button class="nav-btn" id="prev-btn">‹</button>
-<button class="nav-btn" id="next-btn">›</button>
-<div id="dots"></div>
-<div id="counter">01 / 09</div>
-
-<div id="slides">
-
-  <!-- ═══ SLIDE 1: HERO ═══ -->
-  <div class="slide active" data-slide="0">
-    <div class="hero-layout">
-      <div class="hero-left">
-        <div class="hero-tag">Partnership Deck · 2025</div>
-        <div class="hero-title">AI<span class="g">ggs</span></div>
-        <div class="hero-sub">Where AI Hatches Value</div>
-        <div class="hero-badges">
-          <div class="badge badge-green">AI-Native Game</div>
-          <div class="badge badge-gold">Base Chain</div>
-          <div class="badge badge-dim">Chainlink VRF</div>
-          <div class="badge badge-dim">Uniswap V3</div>
-        </div>
-      </div>
-      <div class="egg-wrap">
-        <div class="egg-float">
-          <svg class="egg-glow-wrap" width="250" height="290" viewBox="0 0 250 290" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Shell -->
-            <ellipse cx="125" cy="158" rx="98" ry="118" fill="#080808" stroke="#1e1e1e" stroke-width="1.5"/>
-            <!-- Gold inner orb -->
-            <ellipse cx="125" cy="165" rx="55" ry="65" fill="url(#g1)" opacity="0.92"/>
-            <!-- Crack lines -->
-            <path class="crack-anim" d="M112 82 L118 99 L108 113 L122 132" stroke="#FFB800" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-            <path class="crack-anim" d="M122 132 L135 124 L145 140" stroke="#FFB800" stroke-width="1.1" stroke-linecap="round" fill="none" opacity="0.55"/>
-            <!-- Eyes -->
-            <ellipse cx="102" cy="148" rx="12" ry="14" fill="#C8FF00"/>
-            <ellipse cx="148" cy="148" rx="12" ry="14" fill="#C8FF00"/>
-            <ellipse cx="102" cy="149" rx="6" ry="8" fill="#050505"/>
-            <ellipse cx="148" cy="149" rx="6" ry="8" fill="#050505"/>
-            <!-- Eye shine -->
-            <ellipse cx="104.5" cy="146" rx="2.5" ry="3" fill="white" opacity="0.85"/>
-            <ellipse cx="150.5" cy="146" rx="2.5" ry="3" fill="white" opacity="0.85"/>
-            <!-- Top highlight -->
-            <ellipse cx="125" cy="58" rx="42" ry="18" fill="white" opacity="0.035"/>
-            <defs>
-              <radialGradient id="g1" cx="50%" cy="38%" r="58%">
-                <stop offset="0%" stop-color="#FFD700"/>
-                <stop offset="58%" stop-color="#FFB800" stop-opacity="0.82"/>
-                <stop offset="100%" stop-color="#FF8800" stop-opacity="0.15"/>
-              </radialGradient>
-            </defs>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ SLIDE 2: MARKET ═══ -->
-  <div class="slide" data-slide="1">
-    <div style="width:100%;max-width:1100px;">
-      <div class="section-label">Market Opportunity</div>
-      <div class="section-title">Gaming × AI × Crypto<br>— Three Tides Converging</div>
-      <div class="market-grid">
-        <div class="market-stat">
-          <div class="stat-num c-green" data-count="500" data-suffix="M+">0</div>
-          <div class="stat-label">Global Crypto Gamers</div>
-          <div class="stat-sub">Addressable user base by 2026</div>
-        </div>
-        <div class="market-stat">
-          <div class="stat-num c-gold" data-count="827" data-prefix="$" data-suffix="B">$0</div>
-          <div class="stat-label">GameFi Market Size</div>
-          <div class="stat-sub">Projected 2026 valuation</div>
-        </div>
-        <div class="market-stat">
-          <div class="stat-num" data-count="0" data-suffix="%">0</div>
-          <div class="stat-label">AI-Native Games in Market</div>
-          <div class="stat-sub">Blue ocean — no established player</div>
-        </div>
-        <div class="market-insight">
-          <strong>AIggs is the first game designed to be played through AI tools</strong> — Claude, ChatGPT, Gemini — reaching users inside the AI assistant ecosystem where no competitor operates yet. Every AI conversation becomes a potential acquisition channel.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ SLIDE 3: PRODUCT ═══ -->
-  <div class="slide" data-slide="2">
-    <div style="width:100%;max-width:1100px;">
-      <div class="section-label">Product</div>
-      <div class="section-title">AI-Native Farm Game on Base</div>
-      <div class="features-grid">
-        <div class="feat-card">
-          <span class="feat-icon">🤖</span>
-          <div class="feat-title">AI-Native Distribution</div>
-          <div class="feat-desc">Playable directly via Claude, ChatGPT, Gemini through MCP protocol — zero app install, zero login friction. The AI IS the interface.</div>
-        </div>
-        <div class="feat-card">
-          <span class="feat-icon">🥚</span>
-          <div class="feat-title">Real Yield Mechanics</div>
-          <div class="feat-desc">Chickens produce EGGS every 8h automatically. EGGS convert to $AIGG tokens, anchored to real-world egg commodity value.</div>
-        </div>
-        <div class="feat-card">
-          <span class="feat-icon">⛓️</span>
-          <div class="feat-title">Fully On-Chain</div>
-          <div class="feat-desc">Base mainnet. Chainlink VRF for provably fair oracle draws. Uniswap V3 for protocol-owned permanent liquidity depth.</div>
-        </div>
-        <div class="feat-card">
-          <span class="feat-icon">🔥</span>
-          <div class="feat-title">Multi-Layer Deflation</div>
-          <div class="feat-desc">5% swap tax burned. 100% EGGS burned when buying chickens. 40% of daily revenue permanently injected as LP. Every action deflates.</div>
-        </div>
-        <div class="feat-card">
-          <span class="feat-icon">💳</span>
-          <div class="feat-title">One-Tap Onboarding</div>
-          <div class="feat-desc">CDP Embedded Wallets auto-created on signup. Coinbase OnRamp: Apple Pay → USDC → Base in seconds. No seed phrase needed.</div>
-        </div>
-        <div class="feat-card">
-          <span class="feat-icon">🔮</span>
-          <div class="feat-title">Oracle Draw (神谕金蛋)</div>
-          <div class="feat-desc">Daily Chainlink VRF lottery. Each $0.20 daily card = automatic entry. Prize pool accumulates. Early users hold highest probability odds.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ SLIDE 4: HOW IT WORKS ═══ -->
-  <div class="slide" data-slide="3">
-    <div style="width:100%;max-width:1100px;">
-      <div class="section-label">How It Works</div>
-      <div class="section-title">Start Playing in 60 Seconds</div>
-      <div class="flow-steps">
-        <div class="flow-step">
-          <div class="step-num">1</div>
-          <div class="step-title">Connect via AI Tool</div>
-          <div class="step-desc">User asks Claude or ChatGPT to play AIggs. MCP protocol handles authentication — no separate app download required.</div>
-          <div class="step-tag">AI-NATIVE</div>
-        </div>
-        <div class="flow-step">
-          <div class="step-num">2</div>
-          <div class="step-title">Create Wallet & Fund</div>
-          <div class="step-desc">CDP Embedded Wallet auto-created via email. Apple Pay tops up USDC on Base instantly. No seed phrase, no gas confusion.</div>
-          <div class="step-tag">ZERO FRICTION</div>
-        </div>
-        <div class="flow-step">
-          <div class="step-num">3</div>
-          <div class="step-title">Activate Daily Card</div>
-          <div class="step-desc">$0.20/day grants 1 chicken slot. Chickens auto-produce EGGS every 8h. Max 15 chickens per wallet. Daily card = lottery ticket.</div>
-          <div class="step-tag">$0.20 / DAY</div>
-        </div>
-        <div class="flow-step">
-          <div class="step-num">4</div>
-          <div class="step-title">Earn $AIGG & Win</div>
-          <div class="step-desc">Collect EGGS → swap to $AIGG at market rate. Oracle Draw runs daily via Chainlink VRF. Winners receive USDC directly.</div>
-          <div class="step-tag">REAL YIELD</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ SLIDE 5: TOKEN ECONOMICS ═══ -->
-  <div class="slide" data-slide="4">
-    <div class="token-layout">
+<main class="deck">
+  <section class="slide" id="cover" data-title="Cover">
+    <div class="slide-inner split">
       <div>
-        <div class="section-label">Token Economics</div>
-        <div class="section-title" style="font-size:38px;margin-bottom:0;">Three-Layer<br>Asset Architecture</div>
-        <div class="asset-layers">
-          <div class="asset-layer layer-1">
-            <div class="layer-icon">🥚</div>
-            <div>
-              <div class="layer-name">EGGS — Off-Chain</div>
-              <div class="layer-desc">Farm resource. Auto-produced every 8h. Used for chicken purchases, exchange tickets, and PvP mechanics.</div>
-            </div>
-          </div>
-          <div class="asset-layer layer-2">
-            <div class="layer-icon">🪙</div>
-            <div>
-              <div class="layer-name">$EGGS — ERC-20 on Base</div>
-              <div class="layer-desc">On-chain bridge token. 5% swap tax burned on every conversion. Links farm economy to DeFi markets.</div>
-            </div>
-          </div>
-          <div class="asset-layer layer-3">
-            <div class="layer-icon">⚡</div>
-            <div>
-              <div class="layer-name">$AIGG — 1B Supply Cap</div>
-              <div class="layer-desc">Governance & value layer. 30% tx fee burned. Real-world commodity anchor. Protocol LP auto-deepens perpetually.</div>
-            </div>
-          </div>
+        <p class="kicker reveal">AI Agent Economy · Partner Deck</p>
+        <h1 class="reveal">AI<span class="hero-word">ggs</span></h1>
+        <p class="hero-sub reveal delay-1">Where AI Hatches Value</p>
+        <p class="hero-copy reveal delay-2">AIggs 是一个由 AI 驱动的游戏化经济网络，让用户拥有、训练并扩展自己的 AI Agent，并在持续任务、内容、交易与社区协作中创造可分配价值。</p>
+        <div class="actions reveal delay-3">
+          <a class="btn primary" href="#packages"><span class="btn-icon">+</span>查看合作方案</a>
+          <button class="btn" data-copy="https://aiggs.xyz/deck"><span class="btn-icon">↗</span>复制 Deck 链接</button>
         </div>
       </div>
-      <div>
-        <div class="deflation-title">Deflation Mechanisms</div>
-        <div class="defl-row">
-          <div class="defl-labels"><span>Daily Card → LP Injection</span><span>40%</span></div>
-          <div class="defl-track"><div class="defl-fill" data-w="40"></div></div>
+      <div class="logo-stage reveal delay-2" aria-label="AIggs animated brand mark">
+        <div class="orbital" aria-hidden="true"></div>
+        <div class="aiggs-egg" aria-hidden="true">
+          <i class="eye left"></i>
+          <i class="eye right"></i>
         </div>
-        <div class="defl-row">
-          <div class="defl-labels"><span>EGGS → $AIGG Swap Tax</span><span>5%</span></div>
-          <div class="defl-track"><div class="defl-fill" data-w="5"></div></div>
-        </div>
-        <div class="defl-row">
-          <div class="defl-labels"><span>Egg → Chicken Purchase Burn</span><span>100%</span></div>
-          <div class="defl-track"><div class="defl-fill" data-w="100"></div></div>
-        </div>
-        <div class="defl-row">
-          <div class="defl-labels"><span>Oracle Draw → Prize Pool</span><span>40%</span></div>
-          <div class="defl-track"><div class="defl-fill" data-w="40"></div></div>
-        </div>
-        <div class="defl-row">
-          <div class="defl-labels"><span>Oracle Draw → LP Burn</span><span>40%</span></div>
-          <div class="defl-track"><div class="defl-fill" data-w="40"></div></div>
-        </div>
-        <div class="defl-row">
-          <div class="defl-labels"><span>$AIGG Transaction Fee Burn</span><span>30%</span></div>
-          <div class="defl-track"><div class="defl-fill" data-w="30"></div></div>
-        </div>
-        <div class="lp-note">
-          LP tokens are minted via Uniswap V3 on Base, then <span>permanently burned</span>. Every daily card payment deepens protocol-owned liquidity irreversibly — compounding with each user.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ SLIDE 6: REVENUE ═══ -->
-  <div class="slide" data-slide="5">
-    <div class="revenue-layout">
-      <div>
-        <div class="section-label">Revenue Model</div>
-        <div class="section-title" style="font-size:38px;margin-bottom:0;">Sustainable Unit<br>Economics</div>
-        <div class="rev-streams">
-          <div class="rev-stream">
-            <div class="rev-pct">$0.20</div>
-            <div>
-              <div class="rev-name">Daily Card Fee</div>
-              <div class="rev-desc">Core revenue stream. Auto-deducted via x402 protocol. Includes oracle draw entry ticket.</div>
-            </div>
-          </div>
-          <div class="rev-stream">
-            <div class="rev-pct">5%</div>
-            <div>
-              <div class="rev-name">EGGS Swap Tax</div>
-              <div class="rev-desc">Every EGGS → $AIGG swap burns 5%, generating protocol value + deflationary pressure.</div>
-            </div>
-          </div>
-          <div class="rev-stream">
-            <div class="rev-pct">GEO</div>
-            <div>
-              <div class="rev-name">AI Agent Revenue</div>
-              <div class="rev-desc">Game actions via AI tools generate CPA / GEO referral income. Each AI interaction monetizes.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="chart-title">Monthly Revenue Projection (USD)</div>
-        <div class="bar-chart">
-          <div class="bar-col">
-            <div class="bar" data-h="18"><div class="bar-val">$6K</div></div>
-            <div class="bar-label">1K Users</div>
-          </div>
-          <div class="bar-col">
-            <div class="bar" data-h="45"><div class="bar-val">$30K</div></div>
-            <div class="bar-label">5K Users</div>
-          </div>
-          <div class="bar-col">
-            <div class="bar" data-h="84"><div class="bar-val">$120K</div></div>
-            <div class="bar-label">20K Users</div>
-          </div>
-          <div class="bar-col">
-            <div class="bar" data-h="120"><div class="bar-val">$600K</div></div>
-            <div class="bar-label">100K Users</div>
-          </div>
-        </div>
-        <div class="rev-summary">
-          <div class="rev-summary-label">At 100K Daily Active Users</div>
-          <div class="rev-summary-nums">
-            <div>
-              <div class="rev-num-big c-green">$600K</div>
-              <div class="rev-num-sub">Monthly Revenue</div>
-            </div>
-            <div>
-              <div class="rev-num-big c-gold">$180K</div>
-              <div class="rev-num-sub">Monthly LP Locked</div>
-            </div>
-            <div>
-              <div class="rev-num-big">20%</div>
-              <div class="rev-num-sub">Paid Conversion</div>
-            </div>
+        <div class="brand-board">
+          <img src="./assets/aiggs-logo-board.png" alt="AIggs logo visual reference"/>
+          <div>
+            <b>Brand System Ready</b>
+            <span>黑底版 / 白底版 / ICON / 动态孵化流程 / 应用场景，适配 App、Token、Website、Merchandise 与社群头像。</span>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ═══ SLIDE 7: ROADMAP ═══ -->
-  <div class="slide" data-slide="6">
-    <div class="roadmap-wrap">
-      <div class="section-label">Roadmap</div>
-      <div class="section-title">V1 Live · V1.5 Building · TGE Incoming</div>
-      <div class="roadmap-line">
-        <div class="rm-item">
-          <div class="rm-dot done">MVP</div>
-          <div class="rm-version">V1.0</div>
-          <div class="rm-phase" style="color:var(--green);">✓ Shipped</div>
-          <div class="rm-features">
-            <div class="rm-feat done">Farm core loop</div>
-            <div class="rm-feat done">EGGS production</div>
-            <div class="rm-feat done">AI-native play</div>
-            <div class="rm-feat done">Base deployment</div>
-          </div>
-        </div>
-        <div class="rm-item">
-          <div class="rm-dot active">V1.5</div>
-          <div class="rm-version">V1.5</div>
-          <div class="rm-phase" style="color:var(--gold);">🔥 In Progress</div>
-          <div class="rm-features">
-            <div class="rm-feat active">EGGS → $AIGG swap</div>
-            <div class="rm-feat active">CDP wallet setup</div>
-            <div class="rm-feat active">Apple Pay OnRamp</div>
-            <div class="rm-feat active">Daily card · x402</div>
-          </div>
-        </div>
-        <div class="rm-item">
-          <div class="rm-dot soon">V2</div>
-          <div class="rm-version">V2.0</div>
-          <div class="rm-phase">Q3 2025</div>
-          <div class="rm-features">
-            <div class="rm-feat">Oracle Draw live</div>
-            <div class="rm-feat">Steal mechanic</div>
-            <div class="rm-feat">Incubation system</div>
-            <div class="rm-feat">Referral module</div>
-          </div>
-        </div>
-        <div class="rm-item">
-          <div class="rm-dot soon">TGE</div>
-          <div class="rm-version">TGE</div>
-          <div class="rm-phase">Q3 2025</div>
-          <div class="rm-features">
-            <div class="rm-feat">$AIGG public launch</div>
-            <div class="rm-feat">Liquidity seeded</div>
-            <div class="rm-feat">CEX listings</div>
-            <div class="rm-feat">Community DAO</div>
-          </div>
-        </div>
-        <div class="rm-item">
-          <div class="rm-dot soon">V3</div>
-          <div class="rm-version">V3.0</div>
-          <div class="rm-phase">Q4 2025</div>
-          <div class="rm-features">
-            <div class="rm-feat">AI OS layer</div>
-            <div class="rm-feat">Multi-agent farms</div>
-            <div class="rm-feat">Cross-chain bridge</div>
-            <div class="rm-feat">DAO governance</div>
-          </div>
-        </div>
+  <section class="slide" id="why" data-title="Why Now">
+    <div class="slide-inner">
+      <p class="kicker reveal">Why Now</p>
+      <h2 class="reveal">AI Agent 正在从工具，变成可合作的经济主体</h2>
+      <p class="lead reveal delay-1">合作方需要的不是又一个活动页，而是一套能把用户行为、Agent 执行、链上资产与品牌曝光连接起来的增长基础设施。</p>
+      <div class="cards four" style="margin-top:34px">
+        <article class="card stat reveal delay-1" style="--accent:var(--lime)">
+          <strong data-count="24" data-suffix="/7">0</strong>
+          <span>Agent 在线执行与运营</span>
+        </article>
+        <article class="card stat reveal delay-2" style="--accent:var(--gold)">
+          <strong data-count="30" data-suffix="天">0</strong>
+          <span>合作试点可闭环周期</span>
+        </article>
+        <article class="card stat reveal delay-3" style="--accent:var(--cyan)">
+          <strong data-count="5" data-suffix="类">0</strong>
+          <span>可标准化接入场景</span>
+        </article>
+        <article class="card stat reveal delay-4" style="--accent:var(--violet)">
+          <strong data-count="4" data-suffix="层">0</strong>
+          <span>价值分配与数据反馈</span>
+        </article>
+      </div>
+      <div class="cards two" style="margin-top:16px">
+        <article class="card reveal delay-2" style="--accent:var(--danger)">
+          <span class="label">Partner Pain</span>
+          <h3>用户来得快，留下难，转化更难</h3>
+          <p>活动奖励、空投和内容联名很容易变成一次性流量。AIggs 用任务、偷蛋、养成、兑换和 Agent 早报，把一次访问变成可重复的参与循环。</p>
+        </article>
+        <article class="card reveal delay-3" style="--accent:var(--lime)">
+          <span class="label">AIggs Answer</span>
+          <h3>把合作变成可运行的经济小游戏</h3>
+          <p>合作方可以提供任务、权益、流量、商品或链上资产；AIggs 将它们包装为 Agent 可执行的目标，并用可视化数据追踪贡献和回报。</p>
+        </article>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ═══ SLIDE 8: PARTNERSHIP ═══ -->
-  <div class="slide" data-slide="7">
-    <div style="width:100%;max-width:960px;">
-      <div class="section-label">Partnership</div>
-      <div class="section-title">Let's Build the AI Gaming Economy</div>
-      <div class="partner-grid">
-        <div class="partner-card">
-          <span class="partner-icon">🔗</span>
-          <div class="partner-name">Protocol & Infrastructure</div>
-          <div class="partner-desc">Co-build integrations for Chainlink VRF, Base ecosystem grants, Uniswap liquidity programs, or CDP / OnRamp distribution partnerships.</div>
-          <div class="partner-tags">
-            <span class="ptag g">Base Grants</span>
-            <span class="ptag g">Chainlink</span>
-            <span class="ptag o">Coinbase CDP</span>
-            <span class="ptag">Uniswap</span>
-          </div>
-        </div>
-        <div class="partner-card">
-          <span class="partner-icon">🤝</span>
-          <div class="partner-name">AI Tool Platforms</div>
-          <div class="partner-desc">Featured MCP integration in AI assistant marketplaces. Monetize your user base with a native game mechanic — no development required on your end.</div>
-          <div class="partner-tags">
-            <span class="ptag g">MCP Featured</span>
-            <span class="ptag g">Revenue Share</span>
-            <span class="ptag o">Co-Marketing</span>
-          </div>
-        </div>
-        <div class="partner-card">
-          <span class="partner-icon">📢</span>
-          <div class="partner-name">KOL & Community</div>
-          <div class="partner-desc">Strategic $AIGG allocation for early supporters, exclusive chicken NFT drops, 10% referral commission, and custom oracle draw events.</div>
-          <div class="partner-tags">
-            <span class="ptag g">$AIGG Allocation</span>
-            <span class="ptag o">10% Referral</span>
-            <span class="ptag">Early Access</span>
-          </div>
-        </div>
-        <div class="partner-card">
-          <span class="partner-icon">💰</span>
-          <div class="partner-name">Investment & Launchpad</div>
-          <div class="partner-desc">Pre-TGE strategic round open. Capital welcomed for liquidity seeding, CEX listing support, and AI gaming ecosystem expansion across Base.</div>
-          <div class="partner-tags">
-            <span class="ptag g">Pre-TGE Round</span>
-            <span class="ptag o">Strategic</span>
-            <span class="ptag">Launchpad</span>
-          </div>
-        </div>
+  <section class="slide" id="loop" data-title="Value Loop">
+    <div class="slide-inner">
+      <p class="kicker reveal">The Partnership Flywheel</p>
+      <h2 class="reveal">合作价值飞轮：从曝光到沉淀，再到二次增长</h2>
+      <p class="lead reveal delay-1">每一次联名都被设计成一个闭环：真实需求进入，Agent 执行任务，用户获得反馈，合作方获得数据与转化，AIggs 生态获得更强的任务能力。</p>
+      <div class="value-loop">
+        <i class="moving-dot"></i><i class="moving-dot"></i><i class="moving-dot"></i><i class="moving-dot"></i>
+        <div class="loop-core reveal delay-2"><div><b>$AIGG</b><small>Demand-backed growth loop</small></div></div>
+        <article class="card loop-card reveal delay-1" style="--accent:var(--lime)">
+          <span class="label">01 Demand</span>
+          <h3>合作需求进入</h3>
+          <p>品牌曝光、用户增长、任务执行、交易转化、内容分发和社区活跃，都可以被转译成 AIggs 任务池。</p>
+        </article>
+        <article class="card loop-card reveal delay-2" style="--accent:var(--cyan)">
+          <span class="label">02 Execution</span>
+          <h3>Agent 执行与用户参与</h3>
+          <p>玩家通过 AI Agent 完成任务、收集 EGGS、参与排名与社交博弈；合作方获得自然参与而不是冷启动触达。</p>
+        </article>
+        <article class="card loop-card reveal delay-3" style="--accent:var(--gold)">
+          <span class="label">03 Capture</span>
+          <h3>收益和数据沉淀</h3>
+          <p>活动收入、权益兑换、任务佣金和品牌预算进入可追踪账户；行为数据沉淀为下一轮运营策略。</p>
+        </article>
+        <article class="card loop-card reveal delay-4" style="--accent:var(--danger)">
+          <span class="label">04 Value</span>
+          <h3>回购、销毁与再增长</h3>
+          <p>部分收入可用于 $AIGG 回购、销毁、奖池补充或合作权益复投，让生态价值与合作增长绑定。</p>
+        </article>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ═══ SLIDE 9: CONTACT ═══ -->
-  <div class="slide" data-slide="8">
-    <div class="contact-layout">
-      <div class="contact-egg">
-        <svg width="96" height="116" viewBox="0 0 96 116" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="48" cy="64" rx="40" ry="50" fill="#0A0A0A" stroke="#2a2a2a" stroke-width="1.2"/>
-          <ellipse cx="48" cy="70" rx="22" ry="27" fill="url(#g2)" opacity="0.92"/>
-          <path d="M42 32 L45 41 L40 50" stroke="#FFB800" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.85"/>
-          <ellipse cx="34" cy="57" rx="8" ry="9" fill="#C8FF00"/>
-          <ellipse cx="62" cy="57" rx="8" ry="9" fill="#C8FF00"/>
-          <ellipse cx="34" cy="58" rx="4" ry="5" fill="#050505"/>
-          <ellipse cx="62" cy="58" rx="4" ry="5" fill="#050505"/>
-          <ellipse cx="35.5" cy="56" rx="2" ry="2.5" fill="white" opacity="0.8"/>
-          <ellipse cx="63.5" cy="56" rx="2" ry="2.5" fill="white" opacity="0.8"/>
-          <defs>
-            <radialGradient id="g2" cx="50%" cy="38%" r="58%">
-              <stop offset="0%" stop-color="#FFD700"/>
-              <stop offset="100%" stop-color="#FF8800" stop-opacity="0.15"/>
-            </radialGradient>
-          </defs>
-        </svg>
-      </div>
-      <div class="contact-title">Ready to Hatch<br><span>Something Big?</span></div>
-      <div class="contact-sub">
-        AIggs is actively seeking protocol partners, AI platform integrations,<br>
-        strategic investors, and community builders.
-      </div>
-      <div class="contact-links">
-        <a href="https://aiggs.xyz" target="_blank" class="contact-link primary">🌐 Visit aiggs.xyz</a>
-        <a href="https://aiggs-web.vercel.app/whitepaper" target="_blank" class="contact-link secondary">📄 Whitepaper</a>
-        <a href="mailto:partnership@aiggs.xyz" class="contact-link secondary">✉️ Contact Us</a>
-      </div>
-      <div class="contact-domain">
-        <strong>aiggs.xyz</strong> · Base Mainnet · AI-Native · 2025
+  <section class="slide" id="scenes" data-title="Scenes">
+    <div class="slide-inner">
+      <p class="kicker reveal">Cooperation Scenarios</p>
+      <h2 class="reveal">五类合作场景，覆盖流量、资产、内容、商品与开发者</h2>
+      <div class="cards" style="margin-top:30px">
+        <article class="card scenario reveal delay-1" style="--accent:var(--lime)">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <div><h3>AI 工具平台</h3><p>将 AIggs 作为 Agent 玩法样板，推动用户在对话中完成任务、留存与订阅转化。</p></div>
+        </article>
+        <article class="card scenario reveal delay-2" style="--accent:var(--gold)">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16v10H4z"/><path d="M8 7V5h8v2M8 17v2h8v-2"/></svg></div>
+          <div><h3>品牌与实物权益</h3><p>围绕鸡蛋、食品、潮玩、服饰和线下门店做兑换、抽奖、限定周边与会员增长。</p></div>
+        </article>
+        <article class="card scenario reveal delay-3" style="--accent:var(--cyan)">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 12h12"/><path d="M12 6l6 6-6 6"/><path d="M4 4v16"/></svg></div>
+          <div><h3>Web3 项目方</h3><p>将任务、空投、交易、质押和社区活动接入 Agent 任务池，提升真实互动与链上行为。</p></div>
+        </article>
+        <article class="card scenario reveal delay-1" style="--accent:var(--violet)">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h5M8 17h7"/></svg></div>
+          <div><h3>内容与社群</h3><p>用每日早报、宿敌榜、能量榜和共创剧情持续产出可传播内容，降低运营成本。</p></div>
+        </article>
+        <article class="card scenario reveal delay-2" style="--accent:var(--danger)">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/><path d="M14 4l-4 16"/></svg></div>
+          <div><h3>开发者生态</h3><p>开放 AI Game OS、任务接口、数据面板与素材规范，让外部开发者扩展游戏化场景。</p></div>
+        </article>
+        <article class="card scenario reveal delay-3" style="--accent:var(--lime)">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"/><path d="M5 8h14"/><path d="M7 8l-3 8h6L7 8zM17 8l-3 8h6l-3-8z"/></svg></div>
+          <div><h3>支付与钱包</h3><p>结合 x402、钱包授权和轻量结算，把 Agent 高频小额支付变成可展示的真实案例。</p></div>
+        </article>
       </div>
     </div>
-  </div>
+  </section>
 
-</div><!-- /slides -->
+  <section class="slide" id="brand" data-title="Brand Motion">
+    <div class="slide-inner">
+      <p class="kicker reveal">Dynamic Logo System</p>
+      <h2 class="reveal">动态孵化叙事：从蛋壳出现到品牌显现</h2>
+      <p class="lead reveal delay-1">参考现有 logo 方案，AIggs 的合作传播可以围绕“孵化价值”展开：每个合作任务都是一次能量汇聚，每次用户完成动作都会推动品牌形象从蛋中觉醒。</p>
+      <div class="hatchline">
+        <article class="hatch-step reveal delay-1"><div class="mini-egg dark"></div><h3>01 蛋壳出现</h3><p>The egg appears</p></article>
+        <article class="hatch-step reveal delay-2"><div class="mini-egg"></div><h3>02 能量汇聚</h3><p>Energy gathers</p></article>
+        <article class="hatch-step reveal delay-3"><div class="mini-egg cracked"></div><h3>03 裂纹蔓延</h3><p>Cracks spread</p></article>
+        <article class="hatch-step reveal delay-4"><div class="mini-egg cracked"><i class="eye left" style="width:6px;height:14px"></i><i class="eye right" style="width:6px;height:14px"></i></div><h3>04 AI 觉醒</h3><p>AI awakens</p></article>
+        <article class="hatch-step reveal delay-3"><div class="mini-egg cracked burst"><i class="eye left" style="width:6px;height:14px"></i><i class="eye right" style="width:6px;height:14px"></i></div><h3>05 光芒绽放</h3><p>Light unleashed</p></article>
+        <article class="hatch-step reveal delay-4"><div class="mini-egg cracked burst"></div><h3>06 品牌呈现</h3><p>Brand revealed</p></article>
+      </div>
+    </div>
+  </section>
 
+  <section class="slide" id="model" data-title="Model">
+    <div class="slide-inner">
+      <p class="kicker reveal">Commercial Model</p>
+      <h2 class="reveal">把合作投入拆成可衡量的增长资产</h2>
+      <p class="lead reveal delay-1">AIggs 为合作方提供任务设计、素材适配、Agent 话术、活动页面、数据看板与复盘报告，让每一笔预算对应到可追踪的参与、转化和复购指标。</p>
+      <div class="chart-panel">
+        <article class="card reveal delay-2" style="--accent:var(--lime)">
+          <span class="label">KPI Dashboard</span>
+          <div class="bars">
+            <div class="bar" style="--accent:var(--lime)"><span>参与率</span><div class="track"><div class="fill" data-width="84"></div></div><span>84%</span></div>
+            <div class="bar" style="--accent:var(--gold)"><span>任务完成</span><div class="track"><div class="fill" data-width="68"></div></div><span>68%</span></div>
+            <div class="bar" style="--accent:var(--cyan)"><span>二次访问</span><div class="track"><div class="fill" data-width="53"></div></div><span>53%</span></div>
+            <div class="bar" style="--accent:var(--violet)"><span>权益兑换</span><div class="track"><div class="fill" data-width="41"></div></div><span>41%</span></div>
+            <div class="bar" style="--accent:var(--danger)"><span>链上行为</span><div class="track"><div class="fill" data-width="36"></div></div><span>36%</span></div>
+          </div>
+        </article>
+        <article class="card reveal delay-3" style="--accent:var(--gold)">
+          <span class="label">Value Allocation</span>
+          <div class="donut">
+            <div class="ring"></div>
+            <div class="ring-label"><b data-count="100" data-suffix="%">0</b><span>cooperation budget</span></div>
+          </div>
+          <div class="legend">
+            <div><i class="swatch" style="--accent:var(--lime)"></i><span>任务激励与用户奖励</span><b>42%</b></div>
+            <div><i class="swatch" style="--accent:var(--gold)"></i><span>品牌权益与兑换池</span><b>26%</b></div>
+            <div><i class="swatch" style="--accent:var(--cyan)"></i><span>内容分发与社群运营</span><b>16%</b></div>
+            <div><i class="swatch" style="--accent:var(--violet)"></i><span>数据、技术与联动开发</span><b>16%</b></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="packages" data-title="Packages">
+    <div class="slide-inner">
+      <p class="kicker reveal">Partnership Packages</p>
+      <h2 class="reveal">三种合作包：从 30 天试点到生态级共建</h2>
+      <p class="lead reveal delay-1">点击切换合作方案。每个方案都可以根据行业、地区、预算和技术接入深度调整。</p>
+      <div class="partner-tabs reveal delay-2" role="tablist">
+        <button class="tab is-active" data-tab="pilot" role="tab">Pilot Launch</button>
+        <button class="tab" data-tab="growth" role="tab">Growth Campaign</button>
+        <button class="tab" data-tab="ecosystem" role="tab">Ecosystem Build</button>
+      </div>
+      <div class="package is-active" id="pilot" role="tabpanel">
+        <article class="card" style="--accent:var(--lime)"><span class="label">30 Days</span><h3>合作试点</h3><p>适合首次验证：设计一条主任务线、一个品牌权益池、一组传播素材和基础数据复盘。</p></article>
+        <article class="card"><h3>交付内容</h3><p>联名页面、AIggs 任务脚本、动态 logo 素材、参与/完成/兑换数据、活动复盘建议。</p></article>
+      </div>
+      <div class="package" id="growth" role="tabpanel">
+        <article class="card" style="--accent:var(--gold)"><span class="label">60-90 Days</span><h3>增长活动</h3><p>适合已有社区或产品：加入积分、排行、推荐、兑换与周期性活动，让合作持续产生内容。</p></article>
+        <article class="card"><h3>交付内容</h3><p>多阶段任务池、社群排行榜、KOL/社区素材、权益兑换逻辑、数据看板和增长实验。</p></article>
+      </div>
+      <div class="package" id="ecosystem" role="tabpanel">
+        <article class="card" style="--accent:var(--cyan)"><span class="label">Long-term</span><h3>生态共建</h3><p>适合 AI、Web3、钱包、支付或开发者平台：将任务、资产、Agent 和 API 接入长期合作网络。</p></article>
+        <article class="card"><h3>交付内容</h3><p>联合路线图、技术接口、Agent 协议协作、链上资产设计、开发者文档和季度生态活动。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="roadmap" data-title="Roadmap">
+    <div class="slide-inner">
+      <p class="kicker reveal">Execution Roadmap</p>
+      <h2 class="reveal">从品牌联名到 AI Game OS 开放</h2>
+      <div class="timeline">
+        <article class="card phase reveal delay-1" style="--accent:var(--lime)"><b>Phase 01</b><h3>品牌系统与 Deck 发布</h3><p>完成对外合作资料、动态 logo 叙事、基础合作包和 Vercel 发布。</p></article>
+        <article class="card phase reveal delay-2" style="--accent:var(--gold)"><b>Phase 02</b><h3>首批试点合作</h3><p>选择 AI 工具、Web3 社群、实物权益品牌进行 30 天试点，验证任务闭环。</p></article>
+        <article class="card phase reveal delay-3" style="--accent:var(--cyan)"><b>Phase 03</b><h3>数据看板与任务 API</h3><p>上线可复用的数据面板、任务模板和合作方素材规范，降低复制成本。</p></article>
+        <article class="card phase reveal delay-4" style="--accent:var(--violet)"><b>Phase 04</b><h3>生态级共建</h3><p>开放 AI Game OS，支持外部开发者、支付、钱包、品牌与 Agent 网络长期接入。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="contact" data-title="Contact">
+    <div class="slide-inner">
+      <p class="kicker reveal">Call To Partnership</p>
+      <h2 class="reveal">让 AI 孵化价值，让合作变成可增长的经济循环</h2>
+      <p class="lead reveal delay-1">AIggs 可以从一次联名开始，也可以成为合作方的 AI Agent 游戏化增长层。下一步建议选择一个明确目标：拉新、留存、兑换、链上行为或品牌曝光，然后在 30 天内验证闭环。</p>
+      <div class="cta-grid">
+        <article class="card reveal delay-2" style="--accent:var(--lime)">
+          <span class="label">Next Step</span>
+          <h3>建议启动流程</h3>
+          <p>1. 确定合作目标与受众；2. 选择合作包；3. 设计任务与权益；4. 发布联名活动；5. 基于数据复盘并进入下一阶段。</p>
+        </article>
+        <article class="card contact-box reveal delay-3" style="--accent:var(--gold)">
+          <span class="label">Deck Info</span>
+          <div class="contact-row"><span>Website</span><b>aiggs.xyz/deck</b></div>
+          <div class="contact-row"><span>Positioning</span><b>AI Agent Economy</b></div>
+          <div class="contact-row"><span>Slogan</span><b>Where AI Hatches Value</b></div>
+          <button class="btn primary" data-copy="AIggs Partner Deck - https://aiggs.xyz/deck">复制合作介绍</button>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="toast" role="status" aria-live="polite">已复制</div>
 <script>
-const TOTAL = 9;
-let current = 0;
-let animating = false;
-const animated = new Set();
+const slides=[...document.querySelectorAll(".slide")];
+const dots=document.querySelector("#dots");
+const progressBar=document.querySelector("#progressBar");
+const counters=[...document.querySelectorAll("[data-count]")];
+const fills=[...document.querySelectorAll(".fill")];
+const revealNodes=[...document.querySelectorAll(".reveal")];
+const toast=document.querySelector(".toast");
+const prefersReduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* Build dots */
-const dotsEl = document.getElementById('dots');
-for (let i = 0; i < TOTAL; i++) {
-  const d = document.createElement('div');
-  d.className = 'dot' + (i === 0 ? ' active' : '');
-  d.addEventListener('click', () => goTo(i));
-  dotsEl.appendChild(d);
-}
-
-/* Navigation */
-document.getElementById('prev-btn').addEventListener('click', () => goTo(current - 1));
-document.getElementById('next-btn').addEventListener('click', () => goTo(current + 1));
-
-function goTo(idx) {
-  if (animating || idx < 0 || idx >= TOTAL || idx === current) return;
-  animating = true;
-
-  const allSlides = document.querySelectorAll('.slide');
-  const from = allSlides[current];
-  const to   = allSlides[idx];
-  const dir  = idx > current ? 1 : -1;
-
-  /* Exit */
-  from.style.transition = 'opacity 0.38s ease, transform 0.38s ease';
-  from.style.opacity    = '0';
-  from.style.transform  = `translateX(${-55 * dir}px)`;
-
-  /* Enter setup */
-  to.style.transition  = 'none';
-  to.style.opacity     = '0';
-  to.style.transform   = `translateX(${55 * dir}px)`;
-  to.classList.add('active');
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      to.style.transition = 'opacity 0.38s ease, transform 0.38s ease';
-      to.style.opacity    = '1';
-      to.style.transform  = 'translateX(0)';
-    });
-  });
-
-  setTimeout(() => {
-    from.classList.remove('active');
-    from.style.cssText = '';
-    to.style.cssText   = '';
-    current  = idx;
-    animating = false;
-    updateUI();
-    triggerAnims(idx);
-  }, 400);
-}
-
-function updateUI() {
-  document.querySelectorAll('.dot').forEach((d, i) =>
-    d.classList.toggle('active', i === current)
-  );
-  const pct = ((current + 1) / TOTAL) * 100;
-  document.getElementById('progress-bar').style.width = pct + '%';
-  document.getElementById('counter').textContent =
-    String(current + 1).padStart(2, '0') + ' / ' + String(TOTAL).padStart(2, '0');
-}
-
-/* Counter animation */
-function animateCounter(el) {
-  const target   = parseInt(el.dataset.count);
-  const prefix   = el.dataset.prefix || '';
-  const suffix   = el.dataset.suffix || '';
-  const duration = 1500;
-  const start    = performance.now();
-  function step(now) {
-    const t = Math.min((now - start) / duration, 1);
-    const e = 1 - Math.pow(1 - t, 3);
-    el.textContent = prefix + Math.round(target * e) + suffix;
-    if (t < 1) requestAnimationFrame(step);
+function scrollToHash(){
+  const id=decodeURIComponent(window.location.hash.slice(1));
+  const target=id?document.getElementById(id):null;
+  if(target){
+    const anchor=target.querySelector(".slide-inner")||target;
+    requestAnimationFrame(()=>anchor.scrollIntoView({block:"start"}));
   }
+}
+
+slides.forEach((slide,index)=>{
+  const dot=document.createElement("button");
+  dot.className="dot";
+  dot.type="button";
+  dot.setAttribute("aria-label",`${index+1}. ${slide.dataset.title}`);
+  dot.addEventListener("click",()=>slide.scrollIntoView({behavior:"smooth"}));
+  dots.append(dot);
+});
+
+function formatNumber(value){
+  return new Intl.NumberFormat("zh-CN").format(value);
+}
+
+function animateCount(node){
+  if(node.dataset.done) return;
+  node.dataset.done="true";
+  const target=Number(node.dataset.count);
+  const suffix=node.dataset.suffix||"";
+  const duration=prefersReduced?1:1250;
+  const start=performance.now();
+  const step=(now)=>{
+    const progress=Math.min((now-start)/duration,1);
+    const eased=1-Math.pow(1-progress,4);
+    node.textContent=formatNumber(Math.round(target*eased))+suffix;
+    if(progress<1) requestAnimationFrame(step);
+  };
   requestAnimationFrame(step);
 }
 
-/* Bar animations */
-function animateDefBars(slide) {
-  slide.querySelectorAll('.defl-fill').forEach((bar, i) => {
-    const w = bar.dataset.w;
-    setTimeout(() => { bar.style.width = w + '%'; }, 80 + i * 100);
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach((entry)=>{
+    if(!entry.isIntersecting) return;
+    entry.target.classList.add("is-visible");
+    entry.target.querySelectorAll?.("[data-count]").forEach(animateCount);
+    entry.target.querySelectorAll?.(".fill").forEach((fill)=>{
+      fill.style.width=`${fill.dataset.width}%`;
+    });
   });
-}
-function animateRevBars(slide) {
-  slide.querySelectorAll('.bar').forEach((bar, i) => {
-    const h = bar.dataset.h;
-    setTimeout(() => { bar.style.height = h + 'px'; }, 100 + i * 120);
+},{threshold:.28});
+
+revealNodes.forEach((node)=>observer.observe(node));
+slides.forEach((slide)=>observer.observe(slide));
+
+const slideObserver=new IntersectionObserver((entries)=>{
+  entries.forEach((entry)=>{
+    if(!entry.isIntersecting) return;
+    const index=slides.indexOf(entry.target);
+    document.querySelectorAll(".dot").forEach((dot,dotIndex)=>dot.classList.toggle("is-active",dotIndex===index));
   });
-}
+},{threshold:.55});
+slides.forEach((slide)=>slideObserver.observe(slide));
 
-/* Slide-specific triggers */
-function triggerAnims(idx) {
-  if (animated.has(idx)) return;
-  animated.add(idx);
-  const slide = document.querySelectorAll('.slide')[idx];
-  if (idx === 1) slide.querySelectorAll('[data-count]').forEach(animateCounter);
-  if (idx === 4) animateDefBars(slide);
-  if (idx === 5) { animateRevBars(slide); }
+function updateProgress(){
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  const pct=max>0?window.scrollY/max*100:0;
+  progressBar.style.width=`${pct}%`;
 }
+window.addEventListener("scroll",updateProgress,{passive:true});
+window.addEventListener("hashchange",scrollToHash);
+window.addEventListener("load",()=>{
+  window.setTimeout(scrollToHash,80);
+  window.setTimeout(scrollToHash,520);
+});
+updateProgress();
 
-/* Keyboard */
-document.addEventListener('keydown', e => {
-  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); goTo(current + 1); }
-  if (['ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); goTo(current - 1); }
+document.querySelectorAll("[data-copy]").forEach((button)=>{
+  button.addEventListener("click",async()=>{
+    const text=button.dataset.copy;
+    try{
+      await navigator.clipboard.writeText(text);
+    }catch{
+      const input=document.createElement("textarea");
+      input.value=text;
+      document.body.append(input);
+      input.select();
+      document.execCommand("copy");
+      input.remove();
+    }
+    toast.classList.add("is-visible");
+    window.setTimeout(()=>toast.classList.remove("is-visible"),1700);
+  });
 });
 
-/* Wheel */
-let wheelLocked = false;
-document.addEventListener('wheel', e => {
-  if (wheelLocked) return;
-  wheelLocked = true;
-  goTo(e.deltaY > 0 ? current + 1 : current - 1);
-  setTimeout(() => wheelLocked = false, 650);
-}, { passive: true });
-
-/* Touch */
-let tx0 = 0;
-document.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; }, { passive: true });
-document.addEventListener('touchend', e => {
-  const dx = tx0 - e.changedTouches[0].clientX;
-  if (Math.abs(dx) > 40) goTo(dx > 0 ? current + 1 : current - 1);
+document.querySelectorAll(".tab").forEach((tab)=>{
+  tab.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach((item)=>item.classList.remove("is-active"));
+    document.querySelectorAll(".package").forEach((item)=>item.classList.remove("is-active"));
+    tab.classList.add("is-active");
+    document.getElementById(tab.dataset.tab).classList.add("is-active");
+  });
 });
 
-/* Init */
-updateUI();
-triggerAnims(0);
+const canvas=document.querySelector("#aiggs-field");
+const ctx=canvas.getContext("2d");
+let points=[];
+let width=0;
+let height=0;
+let ratio=Math.min(window.devicePixelRatio||1,2);
+const palette=["#baff20","#ffd23a","#66fff2","#72d31b"];
+
+function resizeCanvas(){
+  width=window.innerWidth;
+  height=window.innerHeight;
+  ratio=Math.min(window.devicePixelRatio||1,2);
+  canvas.width=Math.floor(width*ratio);
+  canvas.height=Math.floor(height*ratio);
+  ctx.setTransform(ratio,0,0,ratio,0,0);
+  const count=Math.max(46,Math.floor(width*height/22000));
+  points=Array.from({length:count},(_,index)=>({
+    x:Math.random()*width,
+    y:Math.random()*height,
+    vx:(Math.random()-.5)*.28,
+    vy:(Math.random()-.5)*.28,
+    size:Math.random()*1.9+.7,
+    color:palette[index%palette.length],
+    phase:Math.random()*Math.PI*2
+  }));
+}
+
+function draw(time=0){
+  ctx.clearRect(0,0,width,height);
+  ctx.globalCompositeOperation="lighter";
+  for(let i=0;i<points.length;i+=1){
+    const point=points[i];
+    if(!prefersReduced){
+      point.x+=point.vx+Math.sin(time/1500+point.phase)*.05;
+      point.y+=point.vy+Math.cos(time/1600+point.phase)*.05;
+    }
+    if(point.x<-20) point.x=width+20;
+    if(point.x>width+20) point.x=-20;
+    if(point.y<-20) point.y=height+20;
+    if(point.y>height+20) point.y=-20;
+    ctx.beginPath();
+    ctx.fillStyle=point.color;
+    ctx.arc(point.x,point.y,point.size,0,Math.PI*2);
+    ctx.fill();
+    for(let j=i+1;j<points.length;j+=1){
+      const other=points[j];
+      const dx=point.x-other.x;
+      const dy=point.y-other.y;
+      const distance=Math.hypot(dx,dy);
+      if(distance<140){
+        const alpha=Math.round((1-distance/140)*42).toString(16).padStart(2,"0");
+        ctx.strokeStyle=point.color+alpha;
+        ctx.lineWidth=1;
+        ctx.beginPath();
+        ctx.moveTo(point.x,point.y);
+        ctx.lineTo(other.x,other.y);
+        ctx.stroke();
+      }
+    }
+  }
+  if(!prefersReduced) requestAnimationFrame(draw);
+}
+
+window.addEventListener("resize",resizeCanvas);
+resizeCanvas();
+draw();
+counters.forEach((node)=>{ if(node.closest(".slide")?.matches(":first-child")) animateCount(node); });
+fills.forEach((fill)=>{ if(fill.getBoundingClientRect().top<window.innerHeight) fill.style.width=`${fill.dataset.width}%`; });
 </script>
 </body>
 </html>
