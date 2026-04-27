@@ -2,83 +2,134 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>AIggs — Partnership Deck</title>
 <style>
   :root {
     --green: #C8FF00;
-    --gold: #FFB800;
-    --bg: #050505;
-    --surface: #0F0F0F;
-    --text: #FFFFFF;
+    --gold:  #FFB800;
+    --bg:    #050505;
+    --surf:  #0F0F0F;
+    --text:  #FFFFFF;
     --muted: #666666;
-    --border: #222222;
+    --bdr:   #222222;
   }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html,body { width:100%;height:100%;background:var(--bg);color:var(--text);
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  html, body {
+    width:100%; height:100%;
+    background:var(--bg); color:var(--text);
     font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
-    overflow:hidden;user-select:none; }
+    overflow:hidden; -webkit-tap-highlight-color:transparent;
+  }
 
-  #progress-bar { position:fixed;top:0;left:0;height:3px;
+  /* ── Progress bar ── */
+  #progress-bar {
+    position:fixed; top:0; left:0; height:3px;
     background:linear-gradient(90deg,var(--green),var(--gold));
-    transition:width .4s ease;z-index:100;width:11.11%; }
+    transition:width .4s ease; z-index:200; width:11.11%;
+  }
 
-  #slides { width:100%;height:100%;position:relative; }
-  .slide { position:absolute;inset:0;display:flex;align-items:center;
-    justify-content:center;padding:56px 80px;
-    opacity:0;transform:translateX(60px);pointer-events:none; }
-  .slide.active { opacity:1;transform:translateX(0);pointer-events:all;transition:none; }
+  /* ── Slide container ── */
+  #slides { width:100%; height:100%; position:relative; }
 
-  #dots { position:fixed;right:24px;top:50%;transform:translateY(-50%);
-    display:flex;flex-direction:column;gap:9px;z-index:100; }
-  .dot { width:7px;height:7px;border-radius:50%;background:var(--border);
-    cursor:pointer;transition:all .3s; }
-  .dot.active { background:var(--green);transform:scale(1.6); }
+  .slide {
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    padding:56px 80px;
+    opacity:0; transform:translateX(60px); pointer-events:none;
+    overflow-y:auto; /* allow scroll on tall mobile content */
+  }
+  .slide.active {
+    opacity:1; transform:translateX(0);
+    pointer-events:all; transition:none;
+  }
 
-  #counter { position:fixed;bottom:24px;right:44px;font-size:11px;
-    color:var(--muted);letter-spacing:1px;z-index:100; }
+  /* ── Dot nav ── */
+  #dots {
+    position:fixed; right:20px; top:50%; transform:translateY(-50%);
+    display:flex; flex-direction:column; gap:9px; z-index:150;
+  }
+  .dot {
+    width:7px; height:7px; border-radius:50%;
+    background:var(--bdr); cursor:pointer; transition:all .3s;
+  }
+  .dot.active { background:var(--green); transform:scale(1.6); }
 
-  .nav-btn { position:fixed;top:50%;transform:translateY(-50%);background:none;
-    border:1px solid var(--border);color:var(--muted);width:38px;height:38px;
-    border-radius:50%;cursor:pointer;font-size:17px;transition:all .2s;z-index:100;
-    display:flex;align-items:center;justify-content:center; }
-  .nav-btn:hover { border-color:var(--green);color:var(--green); }
-  #prev-btn { left:18px; }
-  #next-btn { right:46px; }
+  /* ── Slide counter ── */
+  #counter {
+    position:fixed; bottom:18px; right:40px;
+    font-size:11px; color:var(--muted); letter-spacing:1px; z-index:150;
+  }
 
-  /* ── Shared ── */
-  .lbl { font-size:11px;letter-spacing:3px;color:var(--green);
-    text-transform:uppercase;margin-bottom:12px; }
-  .ttl { font-size:44px;font-weight:800;line-height:1.08;
-    letter-spacing:-1.5px;margin-bottom:40px; }
-  .ttl-sm { font-size:36px;font-weight:800;line-height:1.1;letter-spacing:-1px;margin-bottom:0; }
+  /* ── Arrow nav ── */
+  .nav-btn {
+    position:fixed; top:50%; transform:translateY(-50%);
+    background:none; border:1px solid var(--bdr);
+    color:var(--muted); width:36px; height:36px;
+    border-radius:50%; cursor:pointer; font-size:16px;
+    transition:all .2s; z-index:150;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .nav-btn:hover { border-color:var(--green); color:var(--green); }
+  #prev-btn { left:14px; }
+  #next-btn { right:44px; }
+
+  /* ── Shared typography ── */
+  .lbl {
+    font-size:11px; letter-spacing:3px; color:var(--green);
+    text-transform:uppercase; margin-bottom:12px;
+  }
+  .ttl {
+    font-size:44px; font-weight:800; line-height:1.08;
+    letter-spacing:-1.5px; margin-bottom:40px;
+  }
+  .ttl-sm {
+    font-size:36px; font-weight:800; line-height:1.1;
+    letter-spacing:-1px; margin-bottom:0;
+  }
   .c-green { color:var(--green); }
   .c-gold  { color:var(--gold); }
 
-  /* ═══ SLIDE 1 — HERO ═══ */
-  .hero-layout { display:flex;align-items:center;justify-content:space-between;
-    width:100%;max-width:1200px;gap:60px; }
+  /* ══════════════════════════════════
+     SLIDE 1 — HERO
+  ══════════════════════════════════ */
+  .hero-layout {
+    display:flex; align-items:center; justify-content:space-between;
+    width:100%; max-width:1200px; gap:60px;
+  }
   .hero-left { flex:1; }
-  .hero-tag { display:inline-block;border:1px solid var(--green);color:var(--green);
-    font-size:11px;letter-spacing:2px;padding:5px 14px;border-radius:100px;
-    margin-bottom:26px;text-transform:uppercase; }
-  .hero-title { font-size:72px;font-weight:800;line-height:1;
-    letter-spacing:-2px;margin-bottom:10px; }
+  .hero-tag {
+    display:inline-block; border:1px solid var(--green); color:var(--green);
+    font-size:11px; letter-spacing:2px; padding:5px 14px; border-radius:100px;
+    margin-bottom:24px; text-transform:uppercase;
+  }
+  .hero-title {
+    font-size:72px; font-weight:800; line-height:1;
+    letter-spacing:-2px; margin-bottom:10px;
+  }
   .hero-title .g { color:var(--green); }
-  .hero-hook { font-size:18px;color:var(--muted);line-height:1.55;
-    margin-bottom:36px;max-width:520px; }
+  .hero-hook {
+    font-size:18px; color:var(--muted); line-height:1.6;
+    margin-bottom:34px; max-width:520px;
+  }
   .hero-hook strong { color:var(--text); }
-  .hero-badges { display:flex;gap:9px;flex-wrap:wrap; }
-  .badge { padding:5px 13px;border-radius:100px;font-size:11px;
-    font-weight:600;letter-spacing:1px;border:1px solid; }
-  .badge-green { border-color:var(--green);color:var(--green); }
-  .badge-gold  { border-color:var(--gold);color:var(--gold); }
-  .badge-dim   { border-color:#333;color:var(--muted); }
+  .hero-badges { display:flex; gap:8px; flex-wrap:wrap; }
+  .badge {
+    padding:5px 13px; border-radius:100px; font-size:11px;
+    font-weight:600; letter-spacing:1px; border:1px solid;
+  }
+  .badge-green { border-color:var(--green); color:var(--green); }
+  .badge-gold  { border-color:var(--gold);  color:var(--gold); }
+  .badge-dim   { border-color:#333; color:var(--muted); }
 
-  .egg-wrap { width:270px;flex-shrink:0;display:flex;align-items:center;justify-content:center; }
+  .egg-wrap {
+    width:260px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
   .egg-float { animation:float 3.6s ease-in-out infinite; }
   .egg-glow  { animation:pulse-glow 3.6s ease-in-out infinite; }
-  @keyframes float  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-18px)} }
+  @keyframes float      { 0%,100%{transform:translateY(0)}  50%{transform:translateY(-18px)} }
   @keyframes pulse-glow {
     0%,100%{ filter:drop-shadow(0 0 20px rgba(255,184,0,.4)); }
     50%    { filter:drop-shadow(0 0 55px rgba(255,184,0,.85)); }
@@ -86,209 +137,460 @@
   .crack-anim { animation:crack 5s ease-in-out infinite; }
   @keyframes crack { 0%,85%,100%{opacity:.55} 92%{opacity:1} }
 
-  /* ═══ SLIDE 2 — MARKET ═══ */
-  .market-grid { display:grid;grid-template-columns:repeat(3,1fr);
-    gap:22px;width:100%;max-width:1100px; }
-  .market-stat { background:var(--surface);border:1px solid var(--border);
-    border-radius:20px;padding:32px 24px;position:relative;overflow:hidden; }
-  .market-stat::before { content:'';position:absolute;top:0;left:0;right:0;height:2px;
-    background:linear-gradient(90deg,var(--green),transparent); }
-  .stat-num { font-size:52px;font-weight:800;line-height:1;margin-bottom:8px; }
-  .stat-label { font-size:14px;color:var(--muted);line-height:1.4; }
-  .stat-sub { font-size:10px;color:var(--muted);margin-top:4px;opacity:.55; }
-  .market-insight { grid-column:1/-1;
+  /* ══════════════════════════════════
+     SLIDE 2 — MARKET
+  ══════════════════════════════════ */
+  .market-grid {
+    display:grid; grid-template-columns:repeat(3,1fr);
+    gap:20px; width:100%; max-width:1100px;
+  }
+  .market-stat {
+    background:var(--surf); border:1px solid var(--bdr);
+    border-radius:18px; padding:28px 22px;
+    position:relative; overflow:hidden;
+  }
+  .market-stat::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg,var(--green),transparent);
+  }
+  .stat-num { font-size:50px; font-weight:800; line-height:1; margin-bottom:8px; }
+  .stat-label { font-size:13px; color:var(--muted); line-height:1.4; }
+  .stat-sub { font-size:10px; color:var(--muted); margin-top:4px; opacity:.55; }
+  .market-insight {
+    grid-column:1/-1;
     background:linear-gradient(135deg,rgba(200,255,0,.05),rgba(255,184,0,.05));
-    border:1px solid rgba(200,255,0,.2);border-radius:14px;
-    padding:16px 24px;font-size:14px;color:var(--text);line-height:1.65; }
+    border:1px solid rgba(200,255,0,.2); border-radius:13px;
+    padding:15px 22px; font-size:13px; color:var(--text); line-height:1.65;
+  }
   .market-insight strong { color:var(--green); }
 
-  /* ═══ SLIDE 3 — 3 UNFAIR ADVANTAGES ═══ */
-  .adv-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
-    width:100%;max-width:1100px; }
-  .adv-card { background:var(--surface);border:1px solid var(--border);
-    border-radius:20px;padding:32px 28px;position:relative;overflow:hidden;
-    transition:border-color .3s,transform .3s; }
-  .adv-card:hover { border-color:var(--green);transform:translateY(-5px); }
-  .adv-num { font-size:48px;font-weight:900;color:rgba(200,255,0,.12);
-    line-height:1;margin-bottom:14px;letter-spacing:-2px; }
-  .adv-icon { font-size:32px;margin-bottom:12px;display:block; }
-  .adv-title { font-size:18px;font-weight:800;margin-bottom:10px; }
+  /* ══════════════════════════════════
+     SLIDE 3 — 3 UNFAIR ADVANTAGES
+  ══════════════════════════════════ */
+  .adv-grid {
+    display:grid; grid-template-columns:repeat(3,1fr);
+    gap:18px; width:100%; max-width:1100px;
+  }
+  .adv-card {
+    background:var(--surf); border:1px solid var(--bdr);
+    border-radius:20px; padding:28px 24px;
+    transition:border-color .3s,transform .3s;
+  }
+  .adv-card:hover { border-color:var(--green); transform:translateY(-4px); }
+  .adv-num {
+    font-size:44px; font-weight:900; color:rgba(200,255,0,.12);
+    line-height:1; margin-bottom:12px; letter-spacing:-2px;
+  }
+  .adv-icon { font-size:28px; margin-bottom:10px; display:block; }
+  .adv-title { font-size:17px; font-weight:800; margin-bottom:10px; }
   .adv-title span { color:var(--green); }
-  .adv-desc { font-size:12px;color:var(--muted);line-height:1.7; }
-  .adv-proof { margin-top:14px;padding:10px 14px;
-    background:rgba(200,255,0,.05);border:1px solid rgba(200,255,0,.15);
-    border-radius:8px;font-size:11px;color:var(--green);line-height:1.5; }
+  .adv-desc { font-size:12px; color:var(--muted); line-height:1.7; }
+  .adv-proof {
+    margin-top:12px; padding:9px 13px;
+    background:rgba(200,255,0,.05); border:1px solid rgba(200,255,0,.15);
+    border-radius:8px; font-size:11px; color:var(--green); line-height:1.5;
+  }
 
-  /* ═══ SLIDE 4 — HOW IT WORKS ═══ */
-  .flow-steps { display:flex;align-items:flex-start;
-    width:100%;max-width:1100px;margin-top:36px; }
-  .flow-step { flex:1;text-align:center;position:relative; }
+  /* ══════════════════════════════════
+     SLIDE 4 — HOW IT WORKS
+  ══════════════════════════════════ */
+  .flow-steps {
+    display:flex; align-items:flex-start;
+    width:100%; max-width:1100px; margin-top:32px;
+  }
+  .flow-step { flex:1; text-align:center; position:relative; }
   .flow-step:not(:last-child)::after {
-    content:'';position:absolute;top:35px;left:58%;width:84%;height:1px;
-    background:linear-gradient(90deg,var(--green),var(--border)); }
-  .step-num { width:70px;height:70px;border-radius:50%;
-    background:var(--surface);border:2px solid var(--green);
-    display:flex;align-items:center;justify-content:center;
-    font-size:22px;font-weight:800;color:var(--green);margin:0 auto 18px; }
-  .step-title { font-size:14px;font-weight:700;margin-bottom:8px; }
-  .step-desc { font-size:12px;color:var(--muted);line-height:1.5;padding:0 6px; }
-  .step-tag { display:inline-block;margin-top:10px;padding:3px 10px;border-radius:100px;
-    font-size:9px;letter-spacing:1.5px;border:1px solid var(--gold);color:var(--gold); }
+    content:''; position:absolute; top:35px; left:58%; width:84%; height:1px;
+    background:linear-gradient(90deg,var(--green),var(--bdr));
+  }
+  .step-num {
+    width:68px; height:68px; border-radius:50%;
+    background:var(--surf); border:2px solid var(--green);
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; font-weight:800; color:var(--green);
+    margin:0 auto 16px;
+  }
+  .step-title { font-size:13px; font-weight:700; margin-bottom:8px; }
+  .step-desc  { font-size:11px; color:var(--muted); line-height:1.5; padding:0 5px; }
+  .step-tag {
+    display:inline-block; margin-top:9px; padding:3px 9px; border-radius:100px;
+    font-size:9px; letter-spacing:1.5px; border:1px solid var(--gold); color:var(--gold);
+  }
 
-  /* ═══ SLIDE 5 — TOKEN ECONOMICS ═══ */
-  .token-layout { display:grid;grid-template-columns:1.1fr 1fr;
-    gap:48px;width:100%;max-width:1100px;align-items:start; }
-  .asset-layers { display:flex;flex-direction:column;gap:12px;margin-top:28px; }
-  .asset-layer { border-radius:14px;padding:16px 20px;
-    display:flex;align-items:center;gap:14px;border:1px solid;transition:transform .3s; }
-  .asset-layer:hover { transform:translateX(6px); }
-  .layer-1 { border-color:var(--muted);background:rgba(255,255,255,.02); }
-  .layer-2 { border-color:var(--gold);background:rgba(255,184,0,.04); }
-  .layer-3 { border-color:var(--green);background:rgba(200,255,0,.04); }
-  .layer-icon { font-size:24px;flex-shrink:0; }
-  .layer-name { font-size:15px;font-weight:700; }
-  .layer-desc { font-size:11px;color:var(--muted);margin-top:2px; }
-  .defl-title { font-size:11px;letter-spacing:2.5px;color:var(--green);
-    text-transform:uppercase;margin-bottom:16px; }
-  .defl-row { margin-bottom:14px; }
-  .defl-labels { display:flex;justify-content:space-between;
-    font-size:12px;margin-bottom:5px; }
-  .defl-labels span:last-child { color:var(--green);font-weight:700; }
-  .defl-track { height:5px;background:var(--border);border-radius:100px;overflow:hidden; }
-  .defl-fill { height:100%;border-radius:100px;
+  /* ══════════════════════════════════
+     SLIDE 5 — TOKEN ECONOMICS
+  ══════════════════════════════════ */
+  .token-layout {
+    display:grid; grid-template-columns:1.1fr 1fr;
+    gap:48px; width:100%; max-width:1100px; align-items:start;
+  }
+  .asset-layers { display:flex; flex-direction:column; gap:11px; margin-top:26px; }
+  .asset-layer {
+    border-radius:13px; padding:15px 18px;
+    display:flex; align-items:center; gap:13px; border:1px solid;
+    transition:transform .3s;
+  }
+  .asset-layer:hover { transform:translateX(5px); }
+  .layer-1 { border-color:var(--muted); background:rgba(255,255,255,.02); }
+  .layer-2 { border-color:var(--gold);  background:rgba(255,184,0,.04); }
+  .layer-3 { border-color:var(--green); background:rgba(200,255,0,.04); }
+  .layer-icon { font-size:22px; flex-shrink:0; }
+  .layer-name { font-size:14px; font-weight:700; }
+  .layer-desc { font-size:11px; color:var(--muted); margin-top:2px; }
+  .defl-title {
+    font-size:11px; letter-spacing:2.5px; color:var(--green);
+    text-transform:uppercase; margin-bottom:14px;
+  }
+  .defl-row { margin-bottom:13px; }
+  .defl-labels { display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px; }
+  .defl-labels span:last-child { color:var(--green); font-weight:700; }
+  .defl-track { height:5px; background:var(--bdr); border-radius:100px; overflow:hidden; }
+  .defl-fill {
+    height:100%; border-radius:100px;
     background:linear-gradient(90deg,var(--green),var(--gold));
-    width:0;transition:width 1.2s ease; }
-  .lp-note { margin-top:18px;padding:12px 16px;
-    background:rgba(200,255,0,.04);border:1px solid rgba(200,255,0,.18);
-    border-radius:9px;font-size:11px;color:var(--muted);line-height:1.6; }
-  .lp-note span { color:var(--green);font-weight:600; }
+    width:0; transition:width 1.2s ease;
+  }
+  .lp-note {
+    margin-top:16px; padding:12px 15px;
+    background:rgba(200,255,0,.04); border:1px solid rgba(200,255,0,.18);
+    border-radius:9px; font-size:11px; color:var(--muted); line-height:1.6;
+  }
+  .lp-note span { color:var(--green); font-weight:600; }
 
-  /* ═══ SLIDE 6 — REVENUE ═══ */
-  .revenue-layout { display:grid;grid-template-columns:1fr 1fr;
-    gap:48px;width:100%;max-width:1100px;align-items:start; }
-  .rev-streams { display:flex;flex-direction:column;gap:12px;margin-top:28px; }
-  .rev-stream { background:var(--surface);border:1px solid var(--border);
-    border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:14px; }
-  .rev-pct { font-size:24px;font-weight:800;color:var(--green);flex-shrink:0;min-width:56px; }
-  .rev-name { font-size:13px;font-weight:600; }
-  .rev-desc { font-size:11px;color:var(--muted);margin-top:3px; }
-  .chart-title { font-size:11px;letter-spacing:2px;color:var(--muted);
-    text-transform:uppercase;margin-bottom:16px; }
-  .bar-chart { display:flex;align-items:flex-end;gap:14px;
-    height:148px;padding-bottom:30px;position:relative; }
-  .bar-chart::after { content:'';position:absolute;bottom:30px;left:0;right:0;
-    height:1px;background:var(--border); }
-  .bar-col { flex:1;display:flex;flex-direction:column;align-items:center; }
-  .bar { width:100%;border-radius:6px 6px 0 0;
+  /* ══════════════════════════════════
+     SLIDE 6 — REVENUE
+  ══════════════════════════════════ */
+  .revenue-layout {
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:44px; width:100%; max-width:1100px; align-items:start;
+  }
+  .rev-streams { display:flex; flex-direction:column; gap:11px; margin-top:26px; }
+  .rev-stream {
+    background:var(--surf); border:1px solid var(--bdr);
+    border-radius:13px; padding:15px 18px;
+    display:flex; align-items:center; gap:13px;
+  }
+  .rev-pct { font-size:22px; font-weight:800; color:var(--green); flex-shrink:0; min-width:54px; }
+  .rev-name { font-size:13px; font-weight:600; }
+  .rev-desc { font-size:11px; color:var(--muted); margin-top:2px; }
+  .chart-title {
+    font-size:11px; letter-spacing:2px; color:var(--muted);
+    text-transform:uppercase; margin-bottom:14px;
+  }
+  .bar-chart {
+    display:flex; align-items:flex-end; gap:12px;
+    height:144px; padding-bottom:28px; position:relative;
+  }
+  .bar-chart::after {
+    content:''; position:absolute; bottom:28px; left:0; right:0;
+    height:1px; background:var(--bdr);
+  }
+  .bar-col { flex:1; display:flex; flex-direction:column; align-items:center; }
+  .bar {
+    width:100%; border-radius:5px 5px 0 0;
     background:linear-gradient(180deg,var(--green),rgba(200,255,0,.3));
-    height:0;transition:height 1.2s ease;position:relative; }
-  .bar-val { position:absolute;top:-20px;left:50%;transform:translateX(-50%);
-    font-size:10px;font-weight:700;color:var(--green);white-space:nowrap; }
-  .bar-label { margin-top:8px;font-size:10px;color:var(--muted);text-align:center; }
-  .rev-summary { padding:16px 20px;background:var(--surface);
-    border:1px solid var(--border);border-radius:14px;margin-top:10px; }
-  .rev-summary-label { font-size:10px;color:var(--muted);letter-spacing:1.5px;
-    text-transform:uppercase;margin-bottom:10px; }
-  .rev-summary-nums { display:flex;gap:22px;flex-wrap:wrap; }
-  .rev-num-big { font-size:22px;font-weight:800; }
-  .rev-num-sub { font-size:10px;color:var(--muted);margin-top:2px; }
+    height:0; transition:height 1.2s ease; position:relative;
+  }
+  .bar-val {
+    position:absolute; top:-20px; left:50%; transform:translateX(-50%);
+    font-size:10px; font-weight:700; color:var(--green); white-space:nowrap;
+  }
+  .bar-label { margin-top:7px; font-size:10px; color:var(--muted); text-align:center; }
+  .rev-summary {
+    padding:15px 18px; background:var(--surf);
+    border:1px solid var(--bdr); border-radius:13px; margin-top:10px;
+  }
+  .rev-summary-label {
+    font-size:10px; color:var(--muted); letter-spacing:1.5px;
+    text-transform:uppercase; margin-bottom:10px;
+  }
+  .rev-summary-nums { display:flex; gap:20px; flex-wrap:wrap; }
+  .rev-num-big { font-size:22px; font-weight:800; }
+  .rev-num-sub { font-size:10px; color:var(--muted); margin-top:2px; }
 
-  /* ═══ SLIDE 7 — WHAT YOU GET ═══ */
-  .get-layout { width:100%;max-width:1100px; }
-  .get-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px; }
-  .get-card { background:var(--surface);border:1px solid var(--border);
-    border-radius:18px;padding:24px 26px;
-    transition:all .3s;position:relative;overflow:hidden; }
-  .get-card::before { content:'';position:absolute;inset:0;
+  /* ══════════════════════════════════
+     SLIDE 7 — WHAT YOU GET
+  ══════════════════════════════════ */
+  .get-layout { width:100%; max-width:1100px; }
+  .get-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:8px; }
+  .get-card {
+    background:var(--surf); border:1px solid var(--bdr);
+    border-radius:16px; padding:22px 24px;
+    transition:all .3s; position:relative; overflow:hidden;
+  }
+  .get-card::before {
+    content:''; position:absolute; inset:0;
     background:radial-gradient(circle at 0% 0%,rgba(200,255,0,.05),transparent 65%);
-    opacity:0;transition:opacity .3s; }
-  .get-card:hover { border-color:var(--green);transform:translateY(-3px); }
+    opacity:0; transition:opacity .3s;
+  }
+  .get-card:hover { border-color:var(--green); transform:translateY(-3px); }
   .get-card:hover::before { opacity:1; }
-  .get-header { display:flex;align-items:center;gap:12px;margin-bottom:14px; }
-  .get-icon { font-size:26px; }
-  .get-name { font-size:16px;font-weight:800; }
-  .get-for { font-size:10px;color:var(--muted);letter-spacing:1.5px;
-    text-transform:uppercase;margin-top:2px; }
-  .get-items { display:flex;flex-direction:column;gap:7px; }
-  .get-item { display:flex;align-items:flex-start;gap:9px;font-size:12px;line-height:1.5; }
-  .get-bullet { width:16px;height:16px;border-radius:50%;
-    background:rgba(200,255,0,.12);border:1px solid rgba(200,255,0,.3);
-    display:flex;align-items:center;justify-content:center;
-    flex-shrink:0;margin-top:1px;font-size:8px;color:var(--green); }
+  .get-header { display:flex; align-items:center; gap:12px; margin-bottom:13px; }
+  .get-icon { font-size:24px; }
+  .get-name { font-size:15px; font-weight:800; }
+  .get-for  { font-size:10px; color:var(--muted); letter-spacing:1px; text-transform:uppercase; margin-top:2px; }
+  .get-items { display:flex; flex-direction:column; gap:7px; }
+  .get-item  { display:flex; align-items:flex-start; gap:8px; font-size:12px; line-height:1.5; }
+  .get-bullet {
+    width:15px; height:15px; border-radius:50%;
+    background:rgba(200,255,0,.1); border:1px solid rgba(200,255,0,.28);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; margin-top:1px; font-size:8px; color:var(--green);
+  }
   .get-text { color:var(--muted); }
   .get-text strong { color:var(--text); }
 
-  /* ═══ SLIDE 8 — ROADMAP ═══ */
-  .roadmap-wrap { width:100%;max-width:1050px; }
-  .roadmap-line { display:flex;gap:0;position:relative;margin-top:44px; }
-  .roadmap-line::before { content:'';position:absolute;top:29px;left:40px;right:40px;
-    height:2px;background:linear-gradient(90deg,var(--green) 28%,var(--gold) 48%,var(--border) 75%); }
-  .rm-item { flex:1;display:flex;flex-direction:column;
-    align-items:center;text-align:center;padding:0 5px; }
-  .rm-dot { width:58px;height:58px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-size:10px;font-weight:800;letter-spacing:.5px;
-    margin-bottom:13px;position:relative;z-index:1; }
-  .rm-dot.done  { background:var(--green);color:#000; }
-  .rm-dot.active{ background:var(--gold);color:#000;animation:rm-pulse 2s infinite; }
+  /* ══════════════════════════════════
+     SLIDE 8 — ROADMAP
+  ══════════════════════════════════ */
+  .roadmap-wrap { width:100%; max-width:1050px; }
+  .roadmap-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:8px; }
+  .roadmap-line {
+    display:flex; gap:0; position:relative; margin-top:40px;
+    min-width:700px; /* ensures horizontal scroll on mobile */
+  }
+  .roadmap-line::before {
+    content:''; position:absolute; top:29px; left:40px; right:40px;
+    height:2px;
+    background:linear-gradient(90deg,var(--green) 28%,var(--gold) 48%,var(--bdr) 75%);
+  }
+  .rm-item {
+    flex:1; display:flex; flex-direction:column;
+    align-items:center; text-align:center; padding:0 5px;
+  }
+  .rm-dot {
+    width:56px; height:56px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; font-weight:800; letter-spacing:.5px;
+    margin-bottom:12px; position:relative; z-index:1;
+  }
+  .rm-dot.done   { background:var(--green); color:#000; }
+  .rm-dot.active { background:var(--gold);  color:#000; animation:rm-pulse 2s infinite; }
   @keyframes rm-pulse {
     0%,100%{ box-shadow:0 0 0 5px rgba(255,184,0,.18); }
     50%    { box-shadow:0 0 0 12px rgba(255,184,0,.05); }
   }
-  .rm-dot.soon  { background:var(--surface);color:var(--muted);border:2px solid var(--border); }
-  .rm-dot.window{ background:var(--surface);color:var(--green);
+  .rm-dot.soon   { background:var(--surf); color:var(--muted); border:2px solid var(--bdr); }
+  .rm-dot.window {
+    background:var(--surf); color:var(--green);
     border:2px solid rgba(200,255,0,.5);
-    box-shadow:0 0 0 4px rgba(200,255,0,.08); }
-  .rm-version { font-size:14px;font-weight:800;margin-bottom:4px; }
-  .rm-phase   { font-size:10px;color:var(--muted);margin-bottom:9px; }
-  .rm-features { display:flex;flex-direction:column;gap:4px; }
-  .rm-feat { font-size:10px;color:var(--muted);background:var(--surface);
-    border-radius:5px;padding:3px 7px;border:1px solid var(--border); }
-  .rm-feat.done   { border-color:rgba(200,255,0,.3);color:var(--green); }
-  .rm-feat.active { border-color:rgba(255,184,0,.3);color:var(--gold); }
-  .rm-feat.win    { border-color:rgba(200,255,0,.25);color:rgba(200,255,0,.7); }
-  .urgency-banner { margin-top:32px;padding:14px 24px;
+    box-shadow:0 0 0 4px rgba(200,255,0,.08);
+  }
+  .rm-version  { font-size:13px; font-weight:800; margin-bottom:4px; }
+  .rm-phase    { font-size:10px; color:var(--muted); margin-bottom:8px; }
+  .rm-features { display:flex; flex-direction:column; gap:4px; }
+  .rm-feat {
+    font-size:10px; color:var(--muted); background:var(--surf);
+    border-radius:5px; padding:3px 6px; border:1px solid var(--bdr);
+  }
+  .rm-feat.done   { border-color:rgba(200,255,0,.3); color:var(--green); }
+  .rm-feat.active { border-color:rgba(255,184,0,.3); color:var(--gold); }
+  .rm-feat.win    { border-color:rgba(200,255,0,.25); color:rgba(200,255,0,.7); }
+  .urgency-banner {
+    margin-top:28px; padding:13px 22px;
     background:linear-gradient(90deg,rgba(200,255,0,.06),rgba(255,184,0,.04));
-    border:1px solid rgba(200,255,0,.2);border-radius:12px;
-    font-size:13px;color:var(--text);text-align:center;line-height:1.6; }
+    border:1px solid rgba(200,255,0,.2); border-radius:11px;
+    font-size:13px; color:var(--text); text-align:center; line-height:1.6;
+  }
   .urgency-banner strong { color:var(--green); }
 
-  /* ═══ SLIDE 9 — CONTACT ═══ */
-  .contact-layout { display:flex;flex-direction:column;align-items:center;
-    text-align:center;max-width:700px; }
-  .contact-egg { margin-bottom:26px;animation:float 3.6s ease-in-out infinite; }
-  .contact-title { font-size:50px;font-weight:800;line-height:1.08;
-    letter-spacing:-1.5px;margin-bottom:12px; }
+  /* ══════════════════════════════════
+     SLIDE 9 — CONTACT
+  ══════════════════════════════════ */
+  .contact-layout {
+    display:flex; flex-direction:column; align-items:center;
+    text-align:center; max-width:680px;
+  }
+  .contact-egg { margin-bottom:24px; animation:float 3.6s ease-in-out infinite; }
+  .contact-title {
+    font-size:50px; font-weight:800; line-height:1.08;
+    letter-spacing:-1.5px; margin-bottom:12px;
+  }
   .contact-title span { color:var(--green); }
-  .contact-sub { font-size:16px;color:var(--muted);margin-bottom:36px;line-height:1.6; }
-  .contact-links { display:flex;gap:12px;flex-wrap:wrap;justify-content:center; }
-  .contact-link { padding:12px 24px;border-radius:11px;font-size:13px;font-weight:600;
-    text-decoration:none;transition:all .25s;display:flex;align-items:center;gap:7px; }
-  .contact-link.primary { background:var(--green);color:#000; }
-  .contact-link.primary:hover { background:#d4ff1a;transform:translateY(-2px); }
-  .contact-link.secondary { border:1px solid var(--border);color:var(--text); }
-  .contact-link.secondary:hover { border-color:var(--green);color:var(--green);transform:translateY(-2px); }
-  .contact-next { margin-top:28px;padding:14px 28px;
-    background:rgba(200,255,0,.05);border:1px solid rgba(200,255,0,.2);
-    border-radius:12px;font-size:13px;color:var(--muted);line-height:1.6; }
+  .contact-sub { font-size:16px; color:var(--muted); margin-bottom:32px; line-height:1.6; }
+  .contact-links { display:flex; gap:11px; flex-wrap:wrap; justify-content:center; }
+  .contact-link {
+    padding:12px 22px; border-radius:11px; font-size:13px; font-weight:600;
+    text-decoration:none; transition:all .25s;
+    display:flex; align-items:center; gap:7px;
+  }
+  .contact-link.primary  { background:var(--green); color:#000; }
+  .contact-link.primary:hover  { background:#d4ff1a; transform:translateY(-2px); }
+  .contact-link.secondary      { border:1px solid var(--bdr); color:var(--text); }
+  .contact-link.secondary:hover{ border-color:var(--green); color:var(--green); transform:translateY(-2px); }
+  .contact-next {
+    margin-top:24px; padding:13px 24px;
+    background:rgba(200,255,0,.05); border:1px solid rgba(200,255,0,.2);
+    border-radius:11px; font-size:13px; color:var(--muted); line-height:1.6;
+  }
   .contact-next strong { color:var(--green); }
-  .contact-domain { margin-top:20px;font-size:11px;color:var(--muted);letter-spacing:2px; }
+  .contact-domain { margin-top:18px; font-size:11px; color:var(--muted); letter-spacing:2px; }
   .contact-domain strong { color:var(--text); }
+
+  /* ══════════════════════════════════
+     MOBILE NAV HINT (swipe arrows)
+  ══════════════════════════════════ */
+  #mobile-nav {
+    display:none;
+    position:fixed; bottom:0; left:0; right:0;
+    padding:12px 20px 20px;
+    background:linear-gradient(to top,rgba(5,5,5,.95),transparent);
+    z-index:150;
+    justify-content:space-between; align-items:center;
+  }
+  .mob-btn {
+    background:rgba(34,34,34,.8); border:1px solid var(--bdr);
+    color:var(--muted); width:44px; height:44px; border-radius:50%;
+    font-size:18px; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:all .2s;
+  }
+  .mob-btn:active { border-color:var(--green); color:var(--green); }
+  #mob-counter { font-size:12px; color:var(--muted); letter-spacing:1px; }
+
+  /* ══════════════════════════════════
+     TABLET  768 – 1024
+  ══════════════════════════════════ */
+  @media (max-width:1024px) {
+    .slide { padding:44px 52px; }
+    .ttl    { font-size:36px; margin-bottom:28px; }
+    .ttl-sm { font-size:28px; }
+    .hero-title { font-size:58px; }
+    .hero-hook  { font-size:16px; }
+    .stat-num   { font-size:42px; }
+
+    .market-grid { grid-template-columns:repeat(3,1fr); }
+    .adv-grid    { grid-template-columns:repeat(3,1fr); }
+    .get-grid    { grid-template-columns:repeat(2,1fr); }
+    .revenue-layout { gap:32px; }
+    .token-layout   { gap:32px; }
+  }
+
+  /* ══════════════════════════════════
+     MOBILE  ≤ 767
+  ══════════════════════════════════ */
+  @media (max-width:767px) {
+    /* Slide container: scrollable, start from top */
+    .slide {
+      padding:60px 18px 96px;  /* top clears progress, bottom clears mobile nav */
+      align-items:flex-start;
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+
+    /* Hide desktop nav, show mobile nav */
+    #dots, #counter, #prev-btn, #next-btn { display:none !important; }
+    #mobile-nav { display:flex; }
+
+    /* Typography scale-down */
+    .lbl    { font-size:10px; letter-spacing:2px; margin-bottom:8px; }
+    .ttl    { font-size:28px; letter-spacing:-1px; margin-bottom:20px; }
+    .ttl-sm { font-size:22px; letter-spacing:-0.5px; }
+
+    /* ── HERO ── */
+    .hero-layout {
+      flex-direction:column-reverse;
+      align-items:flex-start; gap:20px;
+    }
+    .egg-wrap { width:100%; justify-content:center; }
+    .egg-wrap svg { width:140px; height:auto; }
+    .hero-title { font-size:52px; }
+    .hero-hook  { font-size:15px; margin-bottom:24px; max-width:100%; }
+    .hero-tag   { font-size:10px; margin-bottom:16px; }
+
+    /* ── MARKET ── */
+    .market-grid {
+      grid-template-columns:1fr; gap:12px;
+    }
+    .market-stat { padding:20px 18px; }
+    .stat-num    { font-size:38px; }
+    .stat-label  { font-size:13px; }
+    .market-insight { font-size:12px; padding:13px 16px; }
+
+    /* ── ADVANTAGES ── */
+    .adv-grid  { grid-template-columns:1fr; gap:14px; }
+    .adv-card  { padding:22px 20px; }
+    .adv-num   { font-size:36px; margin-bottom:8px; }
+    .adv-title { font-size:16px; }
+
+    /* ── HOW IT WORKS: vertical stack ── */
+    .flow-steps {
+      flex-direction:column; gap:0; margin-top:20px;
+    }
+    .flow-step { flex:none; width:100%; text-align:left; padding:0; margin-bottom:20px; }
+    .flow-step:not(:last-child)::after {
+      /* vertical line instead of horizontal */
+      top:auto; left:33px; width:2px; height:20px;
+      background:linear-gradient(180deg,var(--green),var(--bdr));
+    }
+    .step-num  { margin:0 0 12px; width:58px; height:58px; font-size:18px; }
+    .step-title{ font-size:14px; }
+    .step-desc { font-size:12px; padding:0; }
+    .step-tag  { font-size:9px; margin-top:8px; }
+
+    /* ── TOKEN ECONOMICS ── */
+    .token-layout  { grid-template-columns:1fr; gap:24px; }
+    .asset-layers  { margin-top:16px; }
+    .asset-layer   { padding:13px 15px; }
+    .layer-name    { font-size:13px; }
+
+    /* ── REVENUE ── */
+    .revenue-layout { grid-template-columns:1fr; gap:24px; }
+    .rev-streams { margin-top:16px; }
+    .rev-stream  { padding:13px 15px; }
+    .rev-pct     { font-size:20px; min-width:48px; }
+    .bar-chart   { height:120px; padding-bottom:24px; }
+    .rev-summary-nums { gap:14px; }
+    .rev-num-big { font-size:18px; }
+
+    /* ── WHAT YOU GET ── */
+    .get-grid  { grid-template-columns:1fr; gap:12px; }
+    .get-card  { padding:18px 18px; }
+    .get-name  { font-size:14px; }
+    .get-item  { font-size:11px; }
+
+    /* ── ROADMAP: horizontal scroll ── */
+    .roadmap-wrap { overflow:visible; }
+    .urgency-banner { font-size:12px; padding:11px 16px; }
+
+    /* ── CONTACT ── */
+    .contact-title { font-size:36px; }
+    .contact-sub   { font-size:14px; margin-bottom:24px; }
+    .contact-egg svg { width:70px; height:auto; }
+    .contact-links { gap:10px; }
+    .contact-link  { padding:11px 18px; font-size:12px; }
+    .contact-next  { font-size:12px; padding:12px 16px; }
+  }
+
+  /* Very small phones */
+  @media (max-width:375px) {
+    .hero-title { font-size:44px; }
+    .ttl        { font-size:24px; }
+    .slide      { padding:56px 14px 90px; }
+  }
 </style>
 </head>
 <body>
 
 <div id="progress-bar"></div>
+
+<!-- Desktop navigation -->
 <button class="nav-btn" id="prev-btn">‹</button>
 <button class="nav-btn" id="next-btn">›</button>
 <div id="dots"></div>
 <div id="counter">01 / 09</div>
 
+<!-- Mobile navigation bar -->
+<div id="mobile-nav">
+  <button class="mob-btn" id="mob-prev">‹</button>
+  <span id="mob-counter">1 / 9</span>
+  <button class="mob-btn" id="mob-next">›</button>
+</div>
+
 <div id="slides">
 
-<!-- ═══════════════════════════════
+<!-- ══════════════════════════════
   SLIDE 1 — HERO
-═══════════════════════════════ -->
+══════════════════════════════ -->
 <div class="slide active" data-slide="0">
   <div class="hero-layout">
     <div class="hero-left">
@@ -308,7 +610,7 @@
     </div>
     <div class="egg-wrap">
       <div class="egg-float">
-        <svg class="egg-glow" width="250" height="290" viewBox="0 0 250 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="egg-glow" width="240" height="280" viewBox="0 0 250 290" fill="none" xmlns="http://www.w3.org/2000/svg">
           <ellipse cx="125" cy="158" rx="98" ry="118" fill="#080808" stroke="#1e1e1e" stroke-width="1.5"/>
           <ellipse cx="125" cy="165" rx="55" ry="65" fill="url(#g1)" opacity="0.92"/>
           <path class="crack-anim" d="M112 82 L118 99 L108 113 L122 132" stroke="#FFB800" stroke-width="1.8" stroke-linecap="round" fill="none"/>
@@ -333,9 +635,9 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════
+<!-- ══════════════════════════════
   SLIDE 2 — MARKET
-═══════════════════════════════ -->
+══════════════════════════════ -->
 <div class="slide" data-slide="1">
   <div style="width:100%;max-width:1100px;">
     <div class="lbl">Market Opportunity</div>
@@ -354,7 +656,7 @@
       <div class="market-stat">
         <div class="stat-num" data-count="0" data-suffix="%">0%</div>
         <div class="stat-label">AI-Native Games — Market Share</div>
-        <div class="stat-sub">No established player. Category is open.</div>
+        <div class="stat-sub">Blue ocean. No established player.</div>
       </div>
       <div class="market-insight">
         Every major AI assistant now supports third-party tools (MCP). <strong>AIggs is the first game built for this distribution layer</strong> — reaching users inside Claude, ChatGPT, and Gemini conversations with zero install friction. Partners who move now own this channel before it's crowded.
@@ -363,9 +665,9 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════
+<!-- ══════════════════════════════
   SLIDE 3 — 3 UNFAIR ADVANTAGES
-═══════════════════════════════ -->
+══════════════════════════════ -->
 <div class="slide" data-slide="2">
   <div style="width:100%;max-width:1100px;">
     <div class="lbl">Why AIggs Wins</div>
@@ -376,29 +678,29 @@
         <span class="adv-icon">🤖</span>
         <div class="adv-title"><span>Zero-CAC</span> AI Distribution</div>
         <div class="adv-desc">AIggs is played inside AI tool conversations — no app store, no ad spend, no login wall. Users discover and play through Claude or ChatGPT as naturally as asking a question. Every AI conversation is a potential acquisition event.</div>
-        <div class="adv-proof">→ Partners get a new monetized use case for their existing AI user base — no engineering required</div>
+        <div class="adv-proof">→ Partners get a monetized use case for their existing AI user base — no engineering required</div>
       </div>
       <div class="adv-card">
         <div class="adv-num">02</div>
         <span class="adv-icon">🥚</span>
         <div class="adv-title"><span>Real-World</span> Value Anchor</div>
-        <div class="adv-desc">$AIGG is backed by real egg commodity value — 1 $AIGG redeemable for 1 real egg. This isn't speculative tokenomics. It's a game economy with a floor price tied to physical supply chains. Credible for users, credible for partners.</div>
+        <div class="adv-desc">$AIGG is backed by real egg commodity value — 1 $AIGG redeemable for 1 real egg. This isn't speculative tokenomics. It's a game economy with a price floor tied to physical supply chains. Credible for users, credible for partners.</div>
         <div class="adv-proof">→ Partners align with a project that has structural token value — not vapor</div>
       </div>
       <div class="adv-card">
         <div class="adv-num">03</div>
         <span class="adv-icon">🔒</span>
         <div class="adv-title"><span>Protocol-Owned</span> Permanent Liquidity</div>
-        <div class="adv-desc">40% of every dollar in daily card revenue auto-injects into Uniswap V3 LP on Base and burns the LP token — irreversibly. Liquidity compounds with every new user. No team can rug. No whale can drain.</div>
+        <div class="adv-desc">40% of every daily card dollar auto-injects into Uniswap V3 LP on Base and burns the LP token — irreversibly. Liquidity compounds with every new user. No team can rug. No whale can drain.</div>
         <div class="adv-proof">→ At 100K users: $180K/month in permanent liquidity added. Partners build on solid ground.</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════
+<!-- ══════════════════════════════
   SLIDE 4 — HOW IT WORKS
-═══════════════════════════════ -->
+══════════════════════════════ -->
 <div class="slide" data-slide="3">
   <div style="width:100%;max-width:1100px;">
     <div class="lbl">User Journey</div>
@@ -407,34 +709,34 @@
       <div class="flow-step">
         <div class="step-num">1</div>
         <div class="step-title">Play via AI Tool</div>
-        <div class="step-desc">User asks Claude or ChatGPT to start AIggs. MCP protocol handles auth — zero app install, zero separate login.</div>
+        <div class="step-desc">User asks Claude or ChatGPT to start AIggs. MCP handles auth — zero app install needed.</div>
         <div class="step-tag">AI-NATIVE</div>
       </div>
       <div class="flow-step">
         <div class="step-num">2</div>
         <div class="step-title">Wallet Auto-Created</div>
-        <div class="step-desc">CDP Embedded Wallet created via email. Apple Pay → USDC on Base in seconds. No seed phrase, no gas confusion.</div>
+        <div class="step-desc">CDP Embedded Wallet created via email. Apple Pay → USDC on Base in seconds. No seed phrase.</div>
         <div class="step-tag">ZERO FRICTION</div>
       </div>
       <div class="flow-step">
         <div class="step-num">3</div>
         <div class="step-title">Activate Daily Card</div>
-        <div class="step-desc">$0.20/day = 1 chicken slot + oracle draw entry. Chickens auto-produce EGGS every 8h. Max 15 chickens.</div>
+        <div class="step-desc">$0.20/day = 1 chicken slot + oracle draw entry. Chickens auto-produce EGGS every 8h.</div>
         <div class="step-tag">$0.20 / DAY</div>
       </div>
       <div class="flow-step">
         <div class="step-num">4</div>
         <div class="step-title">Earn & Win</div>
-        <div class="step-desc">EGGS → $AIGG on-chain. Daily Chainlink VRF oracle draw pays USDC directly to winners. Verifiable on Base.</div>
+        <div class="step-desc">EGGS → $AIGG on-chain. Daily Chainlink VRF oracle draw pays USDC directly to winners.</div>
         <div class="step-tag">REAL YIELD</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════
+<!-- ══════════════════════════════
   SLIDE 5 — TOKEN ECONOMICS
-═══════════════════════════════ -->
+══════════════════════════════ -->
 <div class="slide" data-slide="4">
   <div class="token-layout">
     <div>
@@ -445,21 +747,21 @@
           <div class="layer-icon">🥚</div>
           <div>
             <div class="layer-name">EGGS — Off-Chain Resource</div>
-            <div class="layer-desc">Auto-produced every 8h. Used for chicken purchases, draw tickets, and PvP. Burned on conversion.</div>
+            <div class="layer-desc">Auto-produced every 8h. Burned on conversion. Powers the farm economy.</div>
           </div>
         </div>
         <div class="asset-layer layer-2">
           <div class="layer-icon">🪙</div>
           <div>
             <div class="layer-name">$EGGS — ERC-20 on Base</div>
-            <div class="layer-desc">Bridge token. 5% swap tax burned on every conversion — continuous deflation pressure.</div>
+            <div class="layer-desc">Bridge token. 5% swap tax burned on every conversion.</div>
           </div>
         </div>
         <div class="asset-layer layer-3">
           <div class="layer-icon">⚡</div>
           <div>
             <div class="layer-name">$AIGG — 1B Supply Cap</div>
-            <div class="layer-desc">Governance & value token. Real commodity anchor. 30% fee burn. Protocol LP perpetually deepens.</div>
+            <div class="layer-desc">Governance token. Real commodity anchor. 30% fee burn. LP perpetually deepens.</div>
           </div>
         </div>
       </div>
@@ -475,7 +777,7 @@
         <div class="defl-track"><div class="defl-fill" data-w="5"></div></div>
       </div>
       <div class="defl-row">
-        <div class="defl-labels"><span>Egg → Chicken Purchase Burn</span><span>100%</span></div>
+        <div class="defl-labels"><span>Egg → Chicken Burn</span><span>100%</span></div>
         <div class="defl-track"><div class="defl-fill" data-w="100"></div></div>
       </div>
       <div class="defl-row">
@@ -491,15 +793,15 @@
         <div class="defl-track"><div class="defl-fill" data-w="30"></div></div>
       </div>
       <div class="lp-note">
-        LP tokens are auto-minted via Uniswap V3, then <span>permanently burned</span>. Every user, every day, deepens protocol-owned liquidity — irreversibly. No team wallet can ever touch it.
+        LP tokens are auto-minted via Uniswap V3 on Base, then <span>permanently burned</span>. Every user, every day deepens protocol-owned liquidity — irreversibly.
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════
+<!-- ══════════════════════════════
   SLIDE 6 — REVENUE
-═══════════════════════════════ -->
+══════════════════════════════ -->
 <div class="slide" data-slide="5">
   <div class="revenue-layout">
     <div>
@@ -517,14 +819,14 @@
           <div class="rev-pct">5%</div>
           <div>
             <div class="rev-name">EGGS Swap Tax</div>
-            <div class="rev-desc">Every EGGS → $AIGG swap generates protocol revenue and deflationary buy pressure simultaneously.</div>
+            <div class="rev-desc">Every EGGS → $AIGG swap generates protocol revenue and deflationary buy pressure.</div>
           </div>
         </div>
         <div class="rev-stream">
           <div class="rev-pct">GEO</div>
           <div>
             <div class="rev-name">AI Agent Revenue Share</div>
-            <div class="rev-desc">Game actions via Claude / ChatGPT generate CPA and GEO referral income — distributed to AI platform partners.</div>
+            <div class="rev-desc">Game actions via Claude / ChatGPT generate CPA and GEO referral income for AI platform partners.</div>
           </div>
         </div>
       </div>
@@ -545,7 +847,7 @@
           <div class="bar-label">20K Users</div>
         </div>
         <div class="bar-col">
-          <div class="bar" data-h="120"><div class="bar-val">$600K</div></div>
+          <div class="bar" data-h="114"><div class="bar-val">$600K</div></div>
           <div class="bar-label">100K Users</div>
         </div>
       </div>
@@ -570,15 +872,14 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════
+<!-- ══════════════════════════════
   SLIDE 7 — WHAT YOU GET
-═══════════════════════════════ -->
+══════════════════════════════ -->
 <div class="slide" data-slide="6">
   <div class="get-layout">
     <div class="lbl">For Partners</div>
     <div class="ttl" style="margin-bottom:14px;">Here's Exactly What You Get</div>
     <div class="get-grid">
-
       <div class="get-card">
         <div class="get-header">
           <div class="get-icon">🤖</div>
@@ -590,11 +891,11 @@
         <div class="get-items">
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>Revenue share on daily card fees</strong> from every user who plays via your platform — recurring, daily income from your existing user base</div>
+            <div class="get-text"><strong>Revenue share on daily card fees</strong> — recurring daily income from your existing user base</div>
           </div>
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>Featured MCP listing</strong> — zero development effort on your side, immediate game mechanic for your users</div>
+            <div class="get-text"><strong>Featured MCP listing</strong> — zero dev effort, immediate game mechanic for your users</div>
           </div>
           <div class="get-item">
             <div class="get-bullet">✓</div>
@@ -602,11 +903,10 @@
           </div>
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>Co-branded campaigns</strong> — joint launches to AIggs community (target: 100K users)</div>
+            <div class="get-text"><strong>Co-branded campaigns</strong> — joint launches to AIggs 100K user community</div>
           </div>
         </div>
       </div>
-
       <div class="get-card">
         <div class="get-header">
           <div class="get-icon">⛓️</div>
@@ -618,144 +918,143 @@
         <div class="get-items">
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>Daily on-chain tx volume</strong> — $0.20/tx × DAU drives measurable gas, TVL, and VRF call metrics from day one</div>
+            <div class="get-text"><strong>Daily on-chain tx volume</strong> — $0.20/tx × DAU drives gas, TVL, VRF calls from day one</div>
           </div>
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>$180K+/month in permanent Uniswap V3 TVL</strong> at 100K users — auto-compounding with zero intervention</div>
+            <div class="get-text"><strong>$180K+/month permanent Uniswap V3 TVL</strong> at 100K users, auto-compounding</div>
           </div>
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>Showcase project</strong> — first AI-native game on Base, ideal for ecosystem case studies and grant ROI</div>
+            <div class="get-text"><strong>Showcase project</strong> — first AI-native game on Base, ideal for ecosystem ROI metrics</div>
           </div>
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>CDP / OnRamp adoption driver</strong> — every new player creates a Coinbase embedded wallet via your infra</div>
+            <div class="get-text"><strong>CDP / OnRamp adoption</strong> — every new player creates a Coinbase embedded wallet</div>
           </div>
         </div>
       </div>
-
       <div class="get-card">
         <div class="get-header">
           <div class="get-icon">📢</div>
           <div>
-            <div class="get-name">KOL & Community Builders</div>
+            <div class="get-name">KOL & Community</div>
             <div class="get-for">Influencers · DAOs · Gaming Communities</div>
           </div>
         </div>
         <div class="get-items">
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>Pre-TGE $AIGG allocation</strong> at the lowest possible valuation — before public launch</div>
+            <div class="get-text"><strong>Pre-TGE $AIGG allocation</strong> at lowest valuation — before public launch</div>
           </div>
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>10% lifetime referral commission</strong> paid in USDC — every user you bring earns you $0.02/day forever</div>
+            <div class="get-text"><strong>10% lifetime referral commission</strong> in USDC — $0.02/day per user, forever</div>
           </div>
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>Custom oracle draw events</strong> for your community — exclusive prize pools, co-branded moments</div>
+            <div class="get-text"><strong>Custom oracle draw events</strong> for your community — exclusive prize pools</div>
           </div>
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>Early chicken allocation</strong> — exclusive access before public launch, highest win-odds in oracle draws</div>
+            <div class="get-text"><strong>Early chicken allocation</strong> — exclusive access with highest oracle draw win-odds</div>
           </div>
         </div>
       </div>
-
       <div class="get-card">
         <div class="get-header">
           <div class="get-icon">💰</div>
           <div>
-            <div class="get-name">Strategic Investors & Launchpads</div>
+            <div class="get-name">Investors & Launchpads</div>
             <div class="get-for">VCs · Angels · Launchpad Platforms</div>
           </div>
         </div>
         <div class="get-items">
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>Pre-TGE entry at best terms</strong> — this window closes at TGE; early round offers most favorable valuation</div>
+            <div class="get-text"><strong>Pre-TGE entry at best terms</strong> — this window closes at TGE; earliest round = best valuation</div>
           </div>
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>Revenue-backed token</strong> — $600K/month projected at 100K DAU. Not pure speculation; cash flow from day one.</div>
+            <div class="get-text"><strong>Revenue-backed token</strong> — $600K/month projected at 100K DAU, not pure speculation</div>
           </div>
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>No-rug liquidity design</strong> — LP is protocol-owned and permanently burned. No team wallet drain vector.</div>
+            <div class="get-text"><strong>No-rug liquidity design</strong> — LP is protocol-owned and permanently burned</div>
           </div>
           <div class="get-item">
             <div class="get-bullet">✓</div>
-            <div class="get-text"><strong>Launchpad co-launch</strong> — leverage AIggs TGE event for your platform's community activation and trading volume</div>
+            <div class="get-text"><strong>Co-launch rights</strong> — leverage AIggs TGE for your platform's community activation</div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════
+<!-- ══════════════════════════════
   SLIDE 8 — ROADMAP
-═══════════════════════════════ -->
+══════════════════════════════ -->
 <div class="slide" data-slide="7">
   <div class="roadmap-wrap">
     <div class="lbl">Roadmap</div>
     <div class="ttl">Ship Fast · Partner Now · Win First</div>
-    <div class="roadmap-line">
-      <div class="rm-item">
-        <div class="rm-dot done">MVP</div>
-        <div class="rm-version">V1.0</div>
-        <div class="rm-phase" style="color:var(--green);">✓ Shipped</div>
-        <div class="rm-features">
-          <div class="rm-feat done">Farm core loop</div>
-          <div class="rm-feat done">EGGS production</div>
-          <div class="rm-feat done">AI-native play</div>
-          <div class="rm-feat done">Base deployed</div>
+    <div class="roadmap-scroll">
+      <div class="roadmap-line">
+        <div class="rm-item">
+          <div class="rm-dot done">MVP</div>
+          <div class="rm-version">V1.0</div>
+          <div class="rm-phase" style="color:var(--green);">✓ Shipped</div>
+          <div class="rm-features">
+            <div class="rm-feat done">Farm core loop</div>
+            <div class="rm-feat done">EGGS production</div>
+            <div class="rm-feat done">AI-native play</div>
+            <div class="rm-feat done">Base deployed</div>
+          </div>
         </div>
-      </div>
-      <div class="rm-item">
-        <div class="rm-dot active">V1.5</div>
-        <div class="rm-version">V1.5</div>
-        <div class="rm-phase" style="color:var(--gold);">🔥 Building Now</div>
-        <div class="rm-features">
-          <div class="rm-feat active">EGGS → $AIGG swap</div>
-          <div class="rm-feat active">CDP wallet</div>
-          <div class="rm-feat active">Apple Pay OnRamp</div>
-          <div class="rm-feat active">Daily card · x402</div>
+        <div class="rm-item">
+          <div class="rm-dot active">V1.5</div>
+          <div class="rm-version">V1.5</div>
+          <div class="rm-phase" style="color:var(--gold);">🔥 Building Now</div>
+          <div class="rm-features">
+            <div class="rm-feat active">EGGS → $AIGG swap</div>
+            <div class="rm-feat active">CDP wallet</div>
+            <div class="rm-feat active">Apple Pay OnRamp</div>
+            <div class="rm-feat active">Daily card · x402</div>
+          </div>
         </div>
-      </div>
-      <div class="rm-item">
-        <div class="rm-dot window">NOW</div>
-        <div class="rm-version" style="color:var(--green);">Partner Window</div>
-        <div class="rm-phase" style="color:var(--green);">⬅ Best Terms</div>
-        <div class="rm-features">
-          <div class="rm-feat win">Pre-TGE pricing</div>
-          <div class="rm-feat win">Max referral upside</div>
-          <div class="rm-feat win">Highest win-odds</div>
-          <div class="rm-feat win">Co-launch rights</div>
+        <div class="rm-item">
+          <div class="rm-dot window">NOW</div>
+          <div class="rm-version" style="color:var(--green);">Partner Window</div>
+          <div class="rm-phase" style="color:var(--green);">⬅ Best Terms</div>
+          <div class="rm-features">
+            <div class="rm-feat win">Pre-TGE pricing</div>
+            <div class="rm-feat win">Max referral upside</div>
+            <div class="rm-feat win">Highest win-odds</div>
+            <div class="rm-feat win">Co-launch rights</div>
+          </div>
         </div>
-      </div>
-      <div class="rm-item">
-        <div class="rm-dot soon">TGE</div>
-        <div class="rm-version">TGE</div>
-        <div class="rm-phase">Q3 2025</div>
-        <div class="rm-features">
-          <div class="rm-feat">$AIGG public</div>
-          <div class="rm-feat">LP seeded</div>
-          <div class="rm-feat">CEX listings</div>
-          <div class="rm-feat">Oracle Draw live</div>
+        <div class="rm-item">
+          <div class="rm-dot soon">TGE</div>
+          <div class="rm-version">TGE</div>
+          <div class="rm-phase">Q3 2025</div>
+          <div class="rm-features">
+            <div class="rm-feat">$AIGG public</div>
+            <div class="rm-feat">LP seeded</div>
+            <div class="rm-feat">CEX listings</div>
+            <div class="rm-feat">Oracle Draw live</div>
+          </div>
         </div>
-      </div>
-      <div class="rm-item">
-        <div class="rm-dot soon">V3</div>
-        <div class="rm-version">V3.0</div>
-        <div class="rm-phase">Q4 2025</div>
-        <div class="rm-features">
-          <div class="rm-feat">AI OS layer</div>
-          <div class="rm-feat">Multi-agent farms</div>
-          <div class="rm-feat">Cross-chain</div>
-          <div class="rm-feat">DAO governance</div>
+        <div class="rm-item">
+          <div class="rm-dot soon">V3</div>
+          <div class="rm-version">V3.0</div>
+          <div class="rm-phase">Q4 2025</div>
+          <div class="rm-features">
+            <div class="rm-feat">AI OS layer</div>
+            <div class="rm-feat">Multi-agent farms</div>
+            <div class="rm-feat">Cross-chain</div>
+            <div class="rm-feat">DAO governance</div>
+          </div>
         </div>
       </div>
     </div>
@@ -765,13 +1064,13 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════
+<!-- ══════════════════════════════
   SLIDE 9 — CONTACT
-═══════════════════════════════ -->
+══════════════════════════════ -->
 <div class="slide" data-slide="8">
   <div class="contact-layout">
     <div class="contact-egg">
-      <svg width="88" height="108" viewBox="0 0 88 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="80" height="98" viewBox="0 0 88 108" fill="none" xmlns="http://www.w3.org/2000/svg">
         <ellipse cx="44" cy="60" rx="38" ry="47" fill="#0A0A0A" stroke="#2a2a2a" stroke-width="1.2"/>
         <ellipse cx="44" cy="66" rx="21" ry="25" fill="url(#g2)" opacity="0.92"/>
         <path d="M38 30 L41 40 L36 49" stroke="#FFB800" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.85"/>
@@ -800,8 +1099,8 @@
       <a href="mailto:partnership@aiggs.xyz" class="contact-link secondary">✉️ partnership@aiggs.xyz</a>
     </div>
     <div class="contact-next">
-      <strong>Next step:</strong> 15-minute intro call → we map your partnership type, confirm terms,<br>
-      and get you onboarded before TGE. Respond within 48h to lock pre-TGE pricing.
+      <strong>Next step:</strong> 15-minute intro call → map your partnership type, confirm terms,
+      and get onboarded before TGE. Respond within 48h to lock pre-TGE pricing.
     </div>
     <div class="contact-domain">
       <strong>aiggs.xyz</strong> · Base Mainnet · AI-Native · 2025
@@ -813,10 +1112,10 @@
 
 <script>
 const TOTAL = 9;
-let current = 0;
-let animating = false;
+let current = 0, animating = false;
 const animated = new Set();
 
+/* Build dots */
 const dotsEl = document.getElementById('dots');
 for (let i = 0; i < TOTAL; i++) {
   const d = document.createElement('div');
@@ -825,27 +1124,34 @@ for (let i = 0; i < TOTAL; i++) {
   dotsEl.appendChild(d);
 }
 
+/* Desktop nav */
 document.getElementById('prev-btn').addEventListener('click', () => goTo(current - 1));
 document.getElementById('next-btn').addEventListener('click', () => goTo(current + 1));
+
+/* Mobile nav */
+document.getElementById('mob-prev').addEventListener('click', () => goTo(current - 1));
+document.getElementById('mob-next').addEventListener('click', () => goTo(current + 1));
 
 function goTo(idx) {
   if (animating || idx < 0 || idx >= TOTAL || idx === current) return;
   animating = true;
+
   const all  = document.querySelectorAll('.slide');
   const from = all[current], to = all[idx];
   const dir  = idx > current ? 1 : -1;
 
-  from.style.transition = 'opacity .38s ease, transform .38s ease';
+  from.style.transition = 'opacity .35s ease, transform .35s ease';
   from.style.opacity    = '0';
-  from.style.transform  = `translateX(${-55 * dir}px)`;
+  from.style.transform  = `translateX(${-50 * dir}px)`;
 
   to.style.transition = 'none';
   to.style.opacity    = '0';
-  to.style.transform  = `translateX(${55 * dir}px)`;
+  to.style.transform  = `translateX(${50 * dir}px)`;
   to.classList.add('active');
+  to.scrollTop = 0; /* reset scroll position on mobile */
 
   requestAnimationFrame(() => requestAnimationFrame(() => {
-    to.style.transition = 'opacity .38s ease, transform .38s ease';
+    to.style.transition = 'opacity .35s ease, transform .35s ease';
     to.style.opacity    = '1';
     to.style.transform  = 'translateX(0)';
   }));
@@ -858,36 +1164,42 @@ function goTo(idx) {
     animating = false;
     updateUI();
     triggerAnims(idx);
-  }, 400);
+  }, 380);
 }
 
 function updateUI() {
-  document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===current));
-  document.getElementById('progress-bar').style.width = ((current+1)/TOTAL*100)+'%';
+  document.querySelectorAll('.dot').forEach((d, i) =>
+    d.classList.toggle('active', i === current));
+  const pct = (current + 1) / TOTAL * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
   document.getElementById('counter').textContent =
-    String(current+1).padStart(2,'0') + ' / ' + String(TOTAL).padStart(2,'0');
+    String(current + 1).padStart(2, '0') + ' / ' + String(TOTAL).padStart(2, '0');
+  document.getElementById('mob-counter').textContent =
+    (current + 1) + ' / ' + TOTAL;
 }
 
+/* Counter animation */
 function animateCounter(el) {
   const target = parseInt(el.dataset.count);
   const prefix = el.dataset.prefix || '';
   const suffix = el.dataset.suffix || '';
-  const dur = 1500, start = performance.now();
+  const dur = 1500, t0 = performance.now();
   (function step(now) {
-    const t = Math.min((now-start)/dur,1);
-    const e = 1-Math.pow(1-t,3);
-    el.textContent = prefix + Math.round(target*e) + suffix;
+    const t = Math.min((now - t0) / dur, 1);
+    const e = 1 - Math.pow(1 - t, 3);
+    el.textContent = prefix + Math.round(target * e) + suffix;
     if (t < 1) requestAnimationFrame(step);
-  })(performance.now());
+  })(t0);
 }
 
+/* Bar animations */
 function animateDefBars(slide) {
-  slide.querySelectorAll('.defl-fill').forEach((b,i) =>
-    setTimeout(() => { b.style.width = b.dataset.w + '%'; }, 80 + i*100));
+  slide.querySelectorAll('.defl-fill').forEach((b, i) =>
+    setTimeout(() => { b.style.width = b.dataset.w + '%'; }, 80 + i * 100));
 }
 function animateRevBars(slide) {
-  slide.querySelectorAll('.bar').forEach((b,i) =>
-    setTimeout(() => { b.style.height = b.dataset.h + 'px'; }, 100 + i*120));
+  slide.querySelectorAll('.bar').forEach((b, i) =>
+    setTimeout(() => { b.style.height = b.dataset.h + 'px'; }, 100 + i * 120));
 }
 
 function triggerAnims(idx) {
@@ -899,25 +1211,37 @@ function triggerAnims(idx) {
   if (idx === 5) animateRevBars(slide);
 }
 
+/* Keyboard */
 document.addEventListener('keydown', e => {
-  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); goTo(current+1); }
-  if (['ArrowLeft','ArrowUp'].includes(e.key))         { e.preventDefault(); goTo(current-1); }
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); goTo(current + 1); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key))         { e.preventDefault(); goTo(current - 1); }
 });
 
+/* Wheel (desktop) */
 let wlocked = false;
 document.addEventListener('wheel', e => {
   if (wlocked) return; wlocked = true;
-  goTo(e.deltaY > 0 ? current+1 : current-1);
-  setTimeout(() => wlocked = false, 650);
+  goTo(e.deltaY > 0 ? current + 1 : current - 1);
+  setTimeout(() => wlocked = false, 700);
 }, { passive: true });
 
-let tx0 = 0;
-document.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; }, { passive: true });
-document.addEventListener('touchend',   e => {
+/* Touch swipe */
+let tx0 = 0, ty0 = 0;
+document.addEventListener('touchstart', e => {
+  tx0 = e.touches[0].clientX;
+  ty0 = e.touches[0].clientY;
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
   const dx = tx0 - e.changedTouches[0].clientX;
-  if (Math.abs(dx) > 40) goTo(dx > 0 ? current+1 : current-1);
+  const dy = Math.abs(ty0 - e.changedTouches[0].clientY);
+  /* Only swipe if horizontal movement dominates (not a scroll) */
+  if (Math.abs(dx) > 44 && Math.abs(dx) > dy * 1.5) {
+    goTo(dx > 0 ? current + 1 : current - 1);
+  }
 });
 
+/* Init */
 updateUI();
 triggerAnims(0);
 </script>
