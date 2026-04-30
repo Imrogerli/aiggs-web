@@ -2,6 +2,7 @@
   "version": 2,
   "builds": [
     { "src": "index.html", "use": "@vercel/static" },
+    { "src": "index-v1.html", "use": "@vercel/static" },
     { "src": "whitepaper.html", "use": "@vercel/static" },
     { "src": "deck.html", "use": "@vercel/static" },
     { "src": "farm.html", "use": "@vercel/static" },
@@ -12,6 +13,7 @@
     { "src": "/whitepaper", "dest": "/whitepaper.html" },
     { "src": "/deck", "dest": "/deck.html" },
     { "src": "/farm", "dest": "/farm.html" },
+    { "src": "/v1", "dest": "/index-v1.html" },
     { "src": "/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/docs/(.*)", "dest": "/docs/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
